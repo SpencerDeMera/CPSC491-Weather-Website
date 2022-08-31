@@ -6,13 +6,6 @@
 === Running Python Virtual Environment ===
 - <venv name>\Scripts\activate.bat
 
-=== Create Django Project ===
-- pip install django==<desired django version>
-    # Check version to ensure Django installed correctly
-    - django-admin --version
-- django-admin startproject _491project
-- cd _491project
-
 == Running Django App ===
 - cd _491project
 - python3 manage.py runserver
