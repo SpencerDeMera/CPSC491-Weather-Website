@@ -1,0 +1,5 @@
+=== Running Django Project ===
+- cd _491project
+- python3 manage.py runserver
+- in browser: localhost:8000
+
