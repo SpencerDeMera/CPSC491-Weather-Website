@@ -1,14 +1,18 @@
 === Setting up Pyhton Virtual Environment ===
 - python3 -m pip install --user virtualenv
-- python3 -m venv project-env
+- python3 -m venv <env name>-env
 - <venv name>\Scripts\activate.bat
 
-=== Starting up Virtual Environment ===
-- project-env\Scripts\activate.bat
+=== Running Python Virtual Environment ===
+- <venv name>\Scripts\activate.bat
 
 === Create Django Project ===
-- pip install django==3.2
+- pip install django==<desired django version>
     # Check version to ensure Django installed correctly
     - django-admin --version
 - django-admin startproject _491project
 - cd _491project
+
+== Running Django App ===
+- cd _491project
+- 
