@@ -1,3 +1,7 @@
+
+=== Running Python Virtual Environment ===
+- <venv name>\Scripts\activate.bat
+
 === Running Django Project ===
 - cd _491project
 - python3 manage.py runserver
