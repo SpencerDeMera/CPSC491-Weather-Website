@@ -1,1 +1,1 @@
-# CPSC491-Weather-Website
+# CPSC491-Snippet Web App
