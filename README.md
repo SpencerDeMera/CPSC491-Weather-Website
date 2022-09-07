@@ -1,5 +1,5 @@
 # Snippet Weather/Itinerary Planner
-All-In-One Weather and Itinerary Web App
+### All-In-One Weather and Itinerary Web App
 
 ### Author(s): Spencer DeMera, Mike Sim, and Kris Calma\
 
