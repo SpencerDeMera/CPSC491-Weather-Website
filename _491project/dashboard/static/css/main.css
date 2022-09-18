@@ -8,6 +8,7 @@
     --accentColor: #F34E76;
     --lightPrimaryText: #EBFFF9;
     --darkPrimaryText: #4C5A77;
+    --lightGrayText: #ADADAD;
 }
 
 /* ===== Attributes ===== */
@@ -35,6 +36,7 @@ img {
 }
 
 .showcase {
+    background-color: var(--primaryColor);
     margin-top: 55px;
 }
 
@@ -122,10 +124,125 @@ div.content {
 /* ===== Body ===== */
 .main-body {
     margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body {
+    border-radius: 20px;
+}
+
+/* == Current Conditions == */
+.primary-conditions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.primary-conditions .weather-icon-curr {
+    width: 125px;
+}
+
+.primary-conditions .current-temp-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+}
+
+.primary-conditions .conditions {
+    font-weight: 700;
+    font-size: 20px;
+    margin: -5px;
+    margin-top: 10px;
+}
+
+.primary-conditions .temp {
+    font-weight: 700;
+    font-size: 37px;
+    margin-top: 5px;
+}
+
+.primary-conditions .feels-like {
+    font-weight: 500;
+    font-size: 13px;
+    margin-top: -10px;
+    color: var(--lightGrayText);
+}
+
+.sub-conditions-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sub-conditions-cards .sub-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-conditions-cards .sub-cards .card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 0.75rem;
+    height: 4.5rem;
+    width: 120px;
+    height: 55px;
+    border: solid 2px var(--lightPrimaryBackgroundColor);
+}
+
+.sub-conditions-cards .sub-cards .card .detail-icon {
+    height: 25px;
+}
+
+.sub-conditions-cards .sub-cards .sub-conditions-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    width: 75px;
+    height: 50px;
+}
+
+.sub-conditions-cards .sub-cards .sub-conditions-details .condition-value {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    color: var();
+}
+
+.sub-conditions-cards .sub-cards .sub-conditions-details .condition-description {
+    margin-top: -15px;
+    font-weight: 500;
+    font-size: 10px;
+    color: var(--lightGrayText);
 }
 
 /* ===== Media Controls ===== */
 @media screen and (max-width: 700px) {
+    .showcase {
+        margin-top: 0;
+    }
+
     .sidebar {
         width: 100%;
         height: auto;
@@ -157,6 +274,10 @@ div.content {
 }
 
 @media screen and (max-width: 450px) {
+    .showcase {
+        margin-top: 0;
+    }
+
     .sidebar a {
         text-align: center;
         float: none;
