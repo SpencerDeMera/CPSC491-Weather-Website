@@ -4,7 +4,7 @@
     --primaryColor: #56BFB5;
     --secondaryColor: #55A6D9;
     --lightPrimaryBackgroundColor: #D6F0E8;
-    --lightSecondaryBackgroundColor: #D3D3D3;
+    --lightSecondaryBackgroundColor: #e9e9e9;
     --accentColor: #F34E76;
     --lightPrimaryText: #EBFFF9;
     --darkPrimaryText: #4C5A77;
@@ -36,13 +36,13 @@ img {
 }
 
 .showcase {
-    background-color: var(--primaryColor);
+    background-color: var(--lightPrimaryBackgroundColor);
     margin-top: 55px;
 }
 
 /* ===== Navbar ===== */
 .navbar {
-    background-color: var(--lightPrimaryBackgroundColor);
+    background-color: var(--primaryColor);
 }
 
 a.navbar-brand {
@@ -62,7 +62,7 @@ a.navbar-brand:visited {
     margin: 0;
     padding: 0;
     width: 225px;
-    background-color: var(--lightPrimaryBackgroundColor);
+    background-color: var(--primaryColor);
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -80,7 +80,7 @@ a.navbar-brand:visited {
 }
 
 .sidebar a:hover:not(.active) {
-    background-color: #56BFB5;
+    background-color: var(--lightPrimaryBackgroundColor);
     color: white;
 }
 
@@ -91,7 +91,7 @@ div.content {
 }
 
 .sidebar-divider {
-    background-color: var(--darkPrimaryText);
+    background-color: var(--lightPrimaryBackgroundColor);
     border-radius: 30px;
     height: 2px;
     width: 200px;
@@ -113,7 +113,7 @@ div.content {
     padding-left: 10px;
     font-size: 18px;
     font-weight: 600;
-    color: var(--darkPrimaryText);
+    color: var(--lightPrimaryBackgroundColor);
 }
 
 .saved-locs {
@@ -125,28 +125,47 @@ div.content {
 .main-body {
     margin-top: 15px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-}
-
-.top-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.card-body {
-    border-radius: 20px;
 }
 
 /* == Current Conditions == */
+.main-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 24rem;
+}
+
+.col-sm-6 {
+    display: flex;
+    justify-content: center;
+    border: solid 2px blue;
+}
+
+.mainBox {
+    width: 24rem;
+    border: solid 2px blue;
+}
+
+.curr-conditions {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 10px;
+    background-color: white;
+    width: 20rem;
+    height: 27.5rem;
+}
+
 .primary-conditions {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 18rem;
 }
 
 .primary-conditions .weather-icon-curr {
@@ -158,19 +177,19 @@ div.content {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 125px;
+    width: 150px;
 }
 
 .primary-conditions .conditions {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 25px;
     margin: -5px;
     margin-top: 10px;
 }
 
 .primary-conditions .temp {
     font-weight: 700;
-    font-size: 37px;
+    font-size: 50px;
     margin-top: 5px;
 }
 
@@ -184,9 +203,10 @@ div.content {
 .sub-conditions-cards {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 10px;
+    width: 18rem;
 }
 
 .sub-conditions-cards .sub-cards {
@@ -194,6 +214,7 @@ div.content {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 .sub-conditions-cards .sub-cards .card {
@@ -202,15 +223,17 @@ div.content {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    margin-top: 5px;
     margin-bottom: 0.75rem;
     height: 4.5rem;
-    width: 120px;
-    height: 55px;
+    width: 140px;
+    height: 65px;
     border: solid 2px var(--lightPrimaryBackgroundColor);
 }
 
 .sub-conditions-cards .sub-cards .card .detail-icon {
-    height: 25px;
+    height: 35px;
+    width: 35px;
 }
 
 .sub-conditions-cards .sub-cards .sub-conditions-details {
@@ -226,18 +249,99 @@ div.content {
 .sub-conditions-cards .sub-cards .sub-conditions-details .condition-value {
     margin-top: 10px;
     font-weight: 700;
-    font-size: 15px;
-    color: var();
+    font-size: 17px;
 }
 
 .sub-conditions-cards .sub-cards .sub-conditions-details .condition-description {
     margin-top: -15px;
     font-weight: 500;
-    font-size: 10px;
+    font-size: 12px;
     color: var(--lightGrayText);
 }
 
+/* ===== Info & activity Card(s) ===== */
+.locat-info {
+    background-color: white;
+}
+
+.locat-activities {
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.activities-row {
+    display: flex;
+    justify-content: space-evenly;
+    border: solid 2px red;
+}
+
+.locatTitleBody {
+    display: flex;
+    flex-direction: column;
+    line-height: 0;
+    margin-top: 10px;
+    line-height: 15%;
+}
+
+.locatTitle {
+    font-size: 1.1rem;
+}
+
+.locatSubtitle {
+    font-size: 0.90rem;
+}
+
+.alerts {
+    display: flex;
+    flex-direction: column;
+}
+
+.alertBody {
+
+}
+
+.alertDate {
+    font-size: 0.70rem;
+}
+
+.alertText {
+    font-size: 1rem;
+}
+
 /* ===== Media Controls ===== */
+@media screen and (max-width: 1440px) {
+    .main-card {
+        width: 20rem;
+    }
+
+    .sub-conditions-cards .sub-cards .card {
+        width: 120px;
+        height: 55px;
+    }
+    
+    .sub-conditions-cards .sub-cards .card .detail-icon {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .sub-conditions-cards .sub-cards .sub-conditions-details {
+        width: 75px;
+        height: 50px;
+    }
+    
+    .sub-conditions-cards .sub-cards .sub-conditions-details .condition-value {
+        font-size: 15px;
+    }
+    
+    .sub-conditions-cards .sub-cards .sub-conditions-details .condition-description {
+        font-size: 10px;
+    }
+
+    .locat-info {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 700px) {
     .showcase {
         margin-top: 0;
@@ -269,7 +373,27 @@ div.content {
         display: flex;
         justify-content: center;
         flex-direction: row;
-        /* white-space:nowrap; */
+    }
+
+    .top-row {
+        flex-wrap: wrap;
+    }
+
+    .locat-info {
+        margin-top: 1.5rem;
+        width: 20rem;
+    }
+
+    .locat-activities {
+        width: 20rem;
+    }
+
+    .cond-details {
+        width: 20rem;
+    }
+
+    .forecasting {
+        width: 20rem;
     }
 }
 
@@ -299,6 +423,26 @@ div.content {
         display: flex;
         justify-content: center;
         flex-direction: column;
-        /* white-space:nowrap; */
+    }
+
+    .top-row {
+        flex-wrap: wrap;
+    }
+
+    .locat-info {
+        margin-top: 1.5rem;
+        width: 20rem;
+    }
+
+    .locat-activities {
+        width: 20rem;
+    }
+
+    .cond-details {
+        width: 20rem;
+    }
+
+    .forecasting {
+        width: 20rem;
     }
 }
