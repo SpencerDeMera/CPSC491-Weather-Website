@@ -91,39 +91,54 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <div class="card locat-activities">
+                        <div class="card w-100 locat-activities">
                             <div class="card-body">
-                                <div class="row activities-row">
-                                    <div class="col-sm-2">
-                                        hello
+                                <div class="card-group activities-row">
+                                    <div class="card">
+                                        <img src="{% static 'images/dataIcons/sun.png' %}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">temp text</h5>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-2">
-                                        hello
+                                    <div class="card">
+                                        <img src="{% static 'images/dataIcons/sun.png' %}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">temp text</h5>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-2">
-                                        hello
+                                    <div class="card">
+                                        <img src="{% static 'images/dataIcons/sun.png' %}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">temp text</h5>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-2">
-                                        hello
+                                    <div class="card">
+                                        <img src="{% static 'images/dataIcons/sun.png' %}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">temp text</h5>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-2">
-                                        hello
+                                    <div class="card">
+                                        <img src="{% static 'images/dataIcons/sun.png' %}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">temp text</h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <div class="card text-center mt-4 cond-details">
+                        <div class="card w-100 text-center mt-4 cond-details">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="precip-tab" data-bs-toggle="tab" data-bs-target="#precip-tab-pane" type="button" role="tab" aria-controls="precip-tab-pane" aria-selected="true">Precipitation</button>
+                                <li class="nav-item navItemCustom" role="presentation">
+                                    <button class="nav-link active navLinkCustom" id="precip-tab" data-bs-toggle="tab" data-bs-target="#precip-tab-pane" type="button" role="tab" aria-controls="precip-tab-pane" aria-selected="true">Precipitation</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="aqi-tab" data-bs-toggle="tab" data-bs-target="#aqi-tab-pane" type="button" role="tab" aria-controls="aqi-tab-pane" aria-selected="false">AQ Index</button>
+                                <li class="nav-item navItemCustom" role="presentation">
+                                    <button class="nav-link navLinkCustom" id="aqi-tab" data-bs-toggle="tab" data-bs-target="#aqi-tab-pane" type="button" role="tab" aria-controls="aqi-tab-pane" aria-selected="false">AQI</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="uvi-tab" data-bs-toggle="tab" data-bs-target="#uvi-tab-pane" type="button" role="tab" aria-controls="uvi-tab-pane" aria-selected="false">UV Index</button>
+                                <li class="nav-item navItemCustom" role="presentation">
+                                    <button class="nav-link navLinkCustom" id="uvi-tab" data-bs-toggle="tab" data-bs-target="#uvi-tab-pane" type="button" role="tab" aria-controls="uvi-tab-pane" aria-selected="false">UV Index</button>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
@@ -140,13 +155,13 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <div class="card text-center mt-4 forecasting">
+                        <div class="card w-100 text-center mt-4 forecasting">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="horuly-tab" data-bs-toggle="tab" data-bs-target="#horuly-tab-pane" type="button" role="tab" aria-controls="horuly-tab-pane" aria-selected="true">24-Hour</button>
+                                <li class="nav-item navItemCustom" role="presentation">
+                                    <button class="nav-link active navLinkCustom" id="horuly-tab" data-bs-toggle="tab" data-bs-target="#horuly-tab-pane" type="button" role="tab" aria-controls="horuly-tab-pane" aria-selected="true">24-Hour</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="daily-tab" data-bs-toggle="tab" data-bs-target="#daily-tab-pane" type="button" role="tab" aria-controls="daily-tab-pane" aria-selected="false">7-Day</button>
+                                <li class="nav-item navItemCustom" role="presentation">
+                                    <button class="nav-link navLinkCustom" id="daily-tab" data-bs-toggle="tab" data-bs-target="#daily-tab-pane" type="button" role="tab" aria-controls="daily-tab-pane" aria-selected="false">7-Day</button>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
@@ -159,7 +174,7 @@
                             </div>
                         </div>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>

@@ -144,6 +144,12 @@ div.content {
     border: solid 2px blue;
 }
 
+.col-sm-12 {
+    display: flex;
+    justify-content: center;
+    border: solid 2px blue;
+}
+
 .mainBox {
     width: 24rem;
     border: solid 2px blue;
@@ -271,8 +277,36 @@ div.content {
 
 .activities-row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
-    border: solid 2px red;
+}
+
+.activities-row .card {
+    height: 8rem;
+    width: 8rem;
+    border: solid 1px orange;
+}
+
+
+.activities-row .card .card-img-top {
+    height: 8rem;
+    width: 8rem;
+}
+
+.activities-row .card > .card-body .card-title {
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+    position: relative;
+    text-align: center;
+    color: red;
+}
+
+.activities-row .card .card-body .card-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .locatTitleBody {
@@ -297,7 +331,8 @@ div.content {
 }
 
 .alertBody {
-
+    display: flex;
+    flex-direction: column;
 }
 
 .alertDate {
@@ -307,6 +342,34 @@ div.content {
 .alertText {
     font-size: 1rem;
 }
+
+/* ===== Card Nav ===== */
+.nav-pills {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.navItemCustom > button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--darkPrimaryText);
+}
+
+.navItemCustom > button:hover {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--primaryColor);
+}
+
+.navItemCustom > button:active {
+    background-color: var(--primaryColor);
+}
+
+/* ===== Precip, AQI, UVI Info ===== */
+
+
+/* ===== Forecasting ===== */
+
 
 /* ===== Media Controls ===== */
 @media screen and (max-width: 1440px) {
