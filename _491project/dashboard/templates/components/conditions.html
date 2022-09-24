@@ -1,0 +1,64 @@
+{% load static %}
+
+{% block conditions %}
+<div class="card main-card">
+    <div class="card-body">
+        <div class="primary-conditions">
+            <img src="{% static 'images/OpenWeatherSunny.png' %}" class="weather-icon-curr" alt="...">
+            <div class="current-temp-data">
+                <p class="conditions">Clear Sky</P>
+                <p class="temp">68 °F</P>
+                <p class="feels-like">Feels Like 65 °F</P>
+            </div>
+        </div>
+        <div class="sub-conditions-cards">
+            <div class="sub-cards">
+                <div class="card shadow-sm">
+                    <img class="detail-icon" src="{% static 'images/dataIcons/sun2.png' %}">
+                    <div class="sub-conditions-details">
+                        <p class="condition-value">4</P>
+                        <p class="condition-description">UV Index</P>
+                    </div>
+                </div>
+                <div class="card shadow-sm">
+                    <img class="detail-icon" src="{% static 'images/dataIcons/precip2.png' %}">
+                    <div class="sub-conditions-details">
+                        <p class="condition-value">12 %</P>
+                        <p class="condition-description">Precipitation</P>
+                    </div>
+                </div>
+                <div class="card shadow-sm">
+                    <img class="detail-icon" src="{% static 'images/dataIcons/sunrise2.png' %}">
+                    <div class="sub-conditions-details">
+                        <p class="condition-value">6:50 PM</P>
+                        <p class="condition-description">Sunset</P>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-cards">
+                <div class="card shadow-sm">
+                    <img class="detail-icon" src="{% static 'images/dataIcons/wind2.png' %}">
+                    <div class="sub-conditions-details">
+                        <p class="condition-value">13 mph</P>
+                        <p class="condition-description">Wind Speed</P>
+                    </div>
+                </div>
+                <div class="card shadow-sm">
+                    <img class="detail-icon" src="{% static 'images/dataIcons/clouds2.png' %}">
+                    <div class="sub-conditions-details">
+                        <p class="condition-value"> 23 %</P>
+                        <p class="condition-description">Cloud Cover</P>
+                    </div>
+                </div>
+                <div class="card shadow-sm">
+                    <img class="detail-icon" src="{% static 'images/dataIcons/sunset2.png' %}">
+                    <div class="sub-conditions-details">
+                        <p class="condition-value">6:37 AM</P>
+                        <p class="condition-description">Sunrise</P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

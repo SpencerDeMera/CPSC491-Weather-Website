@@ -7,172 +7,29 @@
             <div class="container-fluid mt-4">
                 <div class="row d-flex">
                     <div class="col-sm-6 mainBox">
-                        <div class="card main-card">
-                            <div class="card-body">
-                                <div class="primary-conditions">
-                                    <img src="{% static 'images/OpenWeatherSunny.png' %}" class="weather-icon-curr" alt="...">
-                                    <div class="current-temp-data">
-                                        <p class="conditions">Clear Sky</P>
-                                        <p class="temp">68 °F</P>
-                                        <p class="feels-like">Feels Like 65 °F</P>
-                                    </div>
-                                </div>
-                                <div class="sub-conditions-cards">
-                                    <div class="sub-cards">
-                                        <div class="card shadow-sm">
-                                            <img class="detail-icon" src="{% static 'images/dataIcons/sun2.png' %}">
-                                            <div class="sub-conditions-details">
-                                                <p class="condition-value">4</P>
-                                                <p class="condition-description">UV Index</P>
-                                            </div>
-                                        </div>
-                                        <div class="card shadow-sm">
-                                            <img class="detail-icon" src="{% static 'images/dataIcons/precip2.png' %}">
-                                            <div class="sub-conditions-details">
-                                                <p class="condition-value">12 %</P>
-                                                <p class="condition-description">Precipitation</P>
-                                            </div>
-                                        </div>
-                                        <div class="card shadow-sm">
-                                            <img class="detail-icon" src="{% static 'images/dataIcons/sunrise2.png' %}">
-                                            <div class="sub-conditions-details">
-                                                <p class="condition-value">6:50 PM</P>
-                                                <p class="condition-description">Sunset</P>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sub-cards">
-                                        <div class="card shadow-sm">
-                                            <img class="detail-icon" src="{% static 'images/dataIcons/wind2.png' %}">
-                                            <div class="sub-conditions-details">
-                                                <p class="condition-value">13 mph</P>
-                                                <p class="condition-description">Wind Speed</P>
-                                            </div>
-                                        </div>
-                                        <div class="card shadow-sm">
-                                            <img class="detail-icon" src="{% static 'images/dataIcons/clouds2.png' %}">
-                                            <div class="sub-conditions-details">
-                                                <p class="condition-value"> 23 %</P>
-                                                <p class="condition-description">Cloud Cover</P>
-                                            </div>
-                                        </div>
-                                        <div class="card shadow-sm">
-                                            <img class="detail-icon" src="{% static 'images/dataIcons/sunset2.png' %}">
-                                            <div class="sub-conditions-details">
-                                                <p class="condition-value">6:37 AM</P>
-                                                <p class="condition-description">Sunrise</P>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% block conditions %}
+                            {% include 'components/conditions.html' %}
+                        {% endblock %}
                     </div>
                     <div class="col-sm-6">
-                        <div class="card locat-info">
-                            <div class="card-body">
-                                <div class="locatTitleBody">
-                                    <p class="locatTitle">12345 Stree Avenue</p>
-                                    <p class="locatTitle">Toon Town, CA, 92831</p>
-                                    <p class="locatSubtitle">United States</p>
-                                </div>
-                                <br>
-                                <div class="alerts">
-                                    <div class="alertBody">
-                                        <p class="alertDate">Updated as of mm/dd/yyyy hh:mm:ss</p>
-                                        <p class="alertText">This is an emergency alert message that you should read because it is very important.</p>
-                                    </div>
-                                    <div class="alertBody">
-                                        <p class="alertDate">Updated as of mm/dd/yyyy hh:mm:ss</p>
-                                        <p class="alertText">This is a weather alert message that you should read because it is very important.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% block locations %}
+                            {% include 'components/locations.html' %}
+                        {% endblock %}
                     </div>
                     <div class="col-sm-12">
-                        <div class="card w-100 locat-activities">
-                            <div class="card-body">
-                                <div class="card-group activities-row">
-                                    <div class="card">
-                                        <img src="{% static 'images/dataIcons/sun.png' %}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">temp text</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <img src="{% static 'images/dataIcons/sun.png' %}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">temp text</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <img src="{% static 'images/dataIcons/sun.png' %}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">temp text</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <img src="{% static 'images/dataIcons/sun.png' %}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">temp text</h5>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <img src="{% static 'images/dataIcons/sun.png' %}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">temp text</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% block activities %}
+                            {% include 'components/activities.html' %}
+                        {% endblock %}
                     </div>
                     <div class="col-sm-12">
-                        <div class="card w-100 text-center mt-4 cond-details">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item navItemCustom" role="presentation">
-                                    <button class="nav-link active navLinkCustom" id="precip-tab" data-bs-toggle="tab" data-bs-target="#precip-tab-pane" type="button" role="tab" aria-controls="precip-tab-pane" aria-selected="true">Precipitation</button>
-                                </li>
-                                <li class="nav-item navItemCustom" role="presentation">
-                                    <button class="nav-link navLinkCustom" id="aqi-tab" data-bs-toggle="tab" data-bs-target="#aqi-tab-pane" type="button" role="tab" aria-controls="aqi-tab-pane" aria-selected="false">AQI</button>
-                                </li>
-                                <li class="nav-item navItemCustom" role="presentation">
-                                    <button class="nav-link navLinkCustom" id="uvi-tab" data-bs-toggle="tab" data-bs-target="#uvi-tab-pane" type="button" role="tab" aria-controls="uvi-tab-pane" aria-selected="false">UV Index</button>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="precip-tab-pane" role="tabpanel" aria-labelledby="precip-tab" tabindex="0">
-                                    <p>Current Precipiation</P>
-                                </div>
-                                <div class="tab-pane fade" id="aqi-tab-pane" role="tabpanel" aria-labelledby="aqi-tab" tabindex="0">
-                                    <p>Current Air Quality</P>
-                                </div>
-                                <div class="tab-pane fade" id="uvi-tab-pane" role="tabpanel" aria-labelledby="uvi-tab" tabindex="0">
-                                    <p>This Week's UV Outlook</P>
-                                </div>
-                            </div>
-                        </div>
+                        {% block details %}
+                            {% include 'components/details.html' %}
+                        {% endblock %}
                     </div>
                     <div class="col-sm-12">
-                        <div class="card w-100 text-center mt-4 forecasting">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item navItemCustom" role="presentation">
-                                    <button class="nav-link active navLinkCustom" id="horuly-tab" data-bs-toggle="tab" data-bs-target="#horuly-tab-pane" type="button" role="tab" aria-controls="horuly-tab-pane" aria-selected="true">24-Hour</button>
-                                </li>
-                                <li class="nav-item navItemCustom" role="presentation">
-                                    <button class="nav-link navLinkCustom" id="daily-tab" data-bs-toggle="tab" data-bs-target="#daily-tab-pane" type="button" role="tab" aria-controls="daily-tab-pane" aria-selected="false">7-Day</button>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="horuly-tab-pane" role="tabpanel" aria-labelledby="horuly-tab" tabindex="0">
-                                    <p>24 Hour Forecast</P>
-                                </div>
-                                <div class="tab-pane fade" id="daily-tab-pane" role="tabpanel" aria-labelledby="daily-tab" tabindex="0">
-                                    <p>7 Day Forcast</P>
-                                </div>
-                            </div>
-                        </div>
+                        {% block forecasts %}
+                            {% include 'components/forecasts.html' %}
+                        {% endblock %}
                     </div>
                 </div>
             </div>
