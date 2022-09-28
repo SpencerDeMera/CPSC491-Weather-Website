@@ -5,6 +5,13 @@ import requests
 from datetime import datetime, timedelta
 import time
 
+# Fullerton coordinates
+testCoords = {
+    'lat': 33.870350,
+    'lon': -117.924301,
+}
+
+# get API keys from API.txt
 def getAPIKeys():
     with open('API.txt', 'r') as f:
         lines = f.read()
@@ -16,10 +23,11 @@ def getAPIKeys():
         
         return keys
 
+# Get primary weather from OWM One Call API
 def weather():
     """Weather Data Ingest"""
     keys = getAPIKeys()
-    r = requests.get('https://api.openweathermap.org/data/2.5/onecall?lat=37.681873&lon=-121.768005&units=imperial&appid=' + keys['openWeather'])
+    r = requests.get('https://api.openweathermap.org/data/2.5/onecall?lat=' + str(testCoords['lat']) + '&lon=' + str(testCoords['lon']) + '&units=imperial&appid=' + keys['openWeather'])
     resp = json.loads(json.dumps(r.json()))
     
     # Call different values within functions to grab JSON data (current conditions, hourly forecast, etc)
@@ -35,6 +43,7 @@ def weather():
     
     return data
 
+# Get separate AQI from OWM Air Quality API
 def aqi():
     """AQI Data Ingest"""
     prior = datetime.now() - timedelta(minutes=60)
@@ -44,7 +53,7 @@ def aqi():
 
     keys = getAPIKeys()
     r = requests.get(
-        'http://api.openweathermap.org/data/2.5/air_pollution/history?lat=37.681873&lon=-121.768005&start='
+        'http://api.openweathermap.org/data/2.5/air_pollution/history?lat=' + str(testCoords['lat']) + '&lon=' + str(testCoords['lon']) + '&start='
         + str(start) + '&end=' + str(end) + '&appid=' + keys['openWeather'])
     resp = json.loads(json.dumps(r.json()))
     
@@ -57,6 +66,7 @@ def aqi():
 
     return data
 
+# Main view return for dashboard app
 def index(request):
     weatherData = weather()
     aqiData = aqi()
