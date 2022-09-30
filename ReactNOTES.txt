@@ -1,0 +1,4 @@
+=== Running React Project ===
+- cd 491project
+- npm start
+# in browser: localhost:3000

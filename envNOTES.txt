@@ -1,0 +1,13 @@
+=== Install Node.js and NPM ===
+# Install node.js
+- sudo apt install nodejs
+# Verify install and check version
+- node -v or node –version
+# Install NPM
+- sudo apt install npm
+# Verify install and check version
+- npm -v or npm –version
+
+=== Create new React app ===
+# Only do if react project hasn't been generated
+- npx create-react-app 491project
