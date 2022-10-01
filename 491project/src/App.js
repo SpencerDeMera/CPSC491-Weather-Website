@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
+import Axios from 'axios';
 import './App.css';
 import Header from './pages/header';
 import Sidebar from './pages/sidebar';
@@ -10,6 +11,19 @@ function App() {
   // ===== TESTING: Fullerton Coordinates ===== 
   var coords = {'lat': 33.870350, 'lon': -117.924301};
   // ===== TESTING: Fullerton Coordinates =====
+
+  // try {
+  //   const weatherData = getWeatherData(coords);
+
+  //   if (weatherData != null) {
+  //     setWeatherInfo(weatherData);
+  //   } else { // if weatherData == null -> error with API call
+  //     setErrMssg(weatherData.message);
+  //   }
+  // } catch (err) {
+  //   setErrMssg(err.message);
+  //   console.log(errMssg);
+  // }
 
   return (
     <div className="App">

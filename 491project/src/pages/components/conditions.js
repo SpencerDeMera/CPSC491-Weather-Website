@@ -17,7 +17,7 @@ export default function Conditions() {
                     <img src={currIcon} className="weather-icon-curr" alt="..." />
                     <div className="current-temp-data">
                         <p className="conditions">Clear Sky</p>
-                        <p className="temp">68 °F</p>
+                        <p className="temp">67 °F</p>
                         <p className="feels-like">Feels Like 65 °F</p>
                     </div>
                 </div>
