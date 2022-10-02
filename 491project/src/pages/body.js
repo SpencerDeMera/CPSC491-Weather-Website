@@ -6,27 +6,29 @@ import Locations from './components/locations';
 import Activities from './components/activities';
 import Details from './components/details';
 import Forecasts from './components/forecasts';
-import { getWeatherData } from './utils/ingest';
+import { getWeatherData, getAQIData } from './utils/ingest';
+import { getLocation } from './utils/process';
 
-export default function Body({coords}) {
+export default function Body() {
     const [weatherInfo, setWeatherInfo] = useState(null);
     const [aqiInfo, setAqiInfo] = useState(null);
     
     // Async load function for getting and setting weather data
     window.onload = async () => {
-        let weatherData = await getWeatherData(coords);
+        const location = await getLocation();
+
+        const weatherData = await getWeatherData(location);
         setWeatherInfo(weatherData);
-        let aqiData = await getWeatherData(coords);
+
+        const aqiData = await getAQIData(location);
         setAqiInfo(aqiData);
     }
 
-    // ===== DEBUG ===== 
-    console.log(weatherInfo);
-    console.log(aqiInfo);
+    if (weatherInfo && aqiInfo) {
+        // ===== DEBUG ===== 
+        console.log(weatherInfo);
+        console.log(aqiInfo);
 
-    const {lat, lon} = coords;
-
-    if (weatherInfo) {
         return (
             <div className="showcase">
                 <div className="content">
@@ -48,7 +50,6 @@ export default function Body({coords}) {
                                 <div className="col-sm-12">
                                     <Forecasts />
                                 </div>
-                                <h3>**TESTING** Lat: {lat} | Lon: {lon}</h3>
                             </div>
                         </div>
                     </div>
@@ -57,7 +58,13 @@ export default function Body({coords}) {
         );
     } else {
         return (
-            <p>Loading Data...</p>
+            <div className="showcase">
+                <div className="content">
+                    <div className="main-body">
+                        <p>Loading Data...</p>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
