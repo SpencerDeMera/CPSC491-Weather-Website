@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
+import ReactLoading from 'react-loading';
 import '../App.css';
 import Conditions from './components/conditions';
 import Locations from './components/locations';
@@ -7,7 +8,7 @@ import Activities from './components/activities';
 import Details from './components/details';
 import Forecasts from './components/forecasts';
 import { getWeatherData, getAQIData } from './utils/ingest';
-import { getLocation } from './utils/process';
+import { getLocation, setWeather, setAqi } from './utils/process';
 
 export default function Body() {
     const [weatherInfo, setWeatherInfo] = useState(null);
@@ -25,9 +26,8 @@ export default function Body() {
     }
 
     if (weatherInfo && aqiInfo) {
-        // ===== DEBUG ===== 
-        console.log(weatherInfo);
-        console.log(aqiInfo);
+        setWeather(weatherInfo);
+        setAqi(aqiInfo);
 
         return (
             <div className="showcase">
@@ -61,7 +61,7 @@ export default function Body() {
             <div className="showcase">
                 <div className="content">
                     <div className="main-body">
-                        <p>Loading Data...</p>
+                        <ReactLoading type={'spinningBubbles'} color={'#56BFB5'} height={200} width={200} />
                     </div>
                 </div>
             </div>

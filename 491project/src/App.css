@@ -175,7 +175,7 @@ div.content {
 }
 
 .primary-conditions .weather-icon-curr {
-    width: 125px;
+    width: 150px;
 }
 
 .primary-conditions .current-temp-data {
@@ -255,7 +255,7 @@ div.content {
 .sub-conditions-cards .sub-cards .sub-conditions-details .condition-value {
     margin-top: 10px;
     font-weight: 700;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .sub-conditions-cards .sub-cards .sub-conditions-details .condition-description {
@@ -393,7 +393,7 @@ div.content {
     }
     
     .sub-conditions-cards .sub-cards .sub-conditions-details .condition-value {
-        font-size: 15px;
+        font-size: 14px;
     }
     
     .sub-conditions-cards .sub-cards .sub-conditions-details .condition-description {
