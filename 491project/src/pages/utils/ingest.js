@@ -1,9 +1,10 @@
 const ONECALL_URL = 'https://api.openweathermap.org/data/2.5/onecall?';
-const AQI_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/history?';
+const AirNow_URL = 'https://www.airnowapi.org/aq/forecast/current/?format=application/json';
 // const GEOCODE_URL = 'https://api.openweathermap.org/geo/1.0/direct?';
 
 let data = require('../../keys.json');
 const OpenWeatherAPI_KEY = data[0]['key'];
+const AirNowGovPI_KEY = data[1]['key'];
 
 let unitsSystem = 'imperial'; // defaults to imperial
 
@@ -20,18 +21,18 @@ export const getWeatherData = async (location) => {
 }
 
 export const getAQIData = async (location) => {
-    var date = new Date();
-    var start = Math.floor(date.getTime() / 1000.0) - 3600;
-    date = new Date();
-    var end = Math.floor(date.getTime() / 1000.0);
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
 
-    const oneCallURL = `${AQI_URL}lat=${location.lat}&lon=${location.lon}&start=${start}&end=${end}&appid=${OpenWeatherAPI_KEY}`;
-    const oenCallResponse = await fetch(oneCallURL); // fetches repsonse from API call and places into repsonse
-    var oneCallResult = await oenCallResponse.json(); // converts json to result variable
+    const airNowURL = `${AirNow_URL}&latitude=${location.lat}&longitude=${location.lon}&date=${year}-${month}-${day}&distance=25&API_KEY=${AirNowGovPI_KEY}`;
+    const airNowResponse = await fetch(airNowURL); // fetches repsonse from API call and places into repsonse
+    var airNowResult = await airNowResponse.json(); // converts json to result variable
     
-    if (oenCallResponse.ok) { // if response is ok
-        return oneCallResult;
+    if (airNowResponse.ok) { // if response is ok
+        return airNowResult;
     } else {
-        return oneCallResult = null; // else if repsonse !ok return result as null
+        return airNowResult = null; // else if repsonse !ok return result as null
     }
 }

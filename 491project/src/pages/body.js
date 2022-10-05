@@ -13,6 +13,10 @@ import { getLocation, setWeather, setAqi } from './utils/process';
 export default function Body() {
     const [weatherInfo, setWeatherInfo] = useState(null);
     const [aqiInfo, setAqiInfo] = useState(null);
+
+    // ===== TESTING: Livermore Coordinates ===== 
+    var coords = {'lat': 37.6819, 'lon': -121.7685};
+    // ===== TESTING: Livermore Coordinates =====
     
     // Async load function for getting and setting weather data
     window.onload = async () => {

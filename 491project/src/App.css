@@ -255,7 +255,7 @@ div.content {
 .sub-conditions-cards .sub-cards .sub-conditions-details .condition-value {
     margin-top: 10px;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .sub-conditions-cards .sub-cards .sub-conditions-details .condition-description {
@@ -393,7 +393,7 @@ div.content {
     }
     
     .sub-conditions-cards .sub-cards .sub-conditions-details .condition-value {
-        font-size: 14px;
+        font-size: 12px;
     }
     
     .sub-conditions-cards .sub-cards .sub-conditions-details .condition-description {
