@@ -1,5 +1,5 @@
 const ONECALL_URL = 'https://api.openweathermap.org/data/2.5/onecall?';
-const AirNow_URL = 'https://www.airnowapi.org/aq/forecast/current/?format=application/json';
+const AirNow_URL = 'https://www.airnowapi.org/aq/observation/latLong/current/?format=application/json';
 // const GEOCODE_URL = 'https://api.openweathermap.org/geo/1.0/direct?';
 
 let data = require('../../keys.json');

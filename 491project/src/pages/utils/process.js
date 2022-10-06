@@ -163,174 +163,25 @@ export const getUvi = () => {
 }
 
 export const getAqiInfo = () => {
-    // DEBUG
-    console.log(aqiInfo);
-
-    const date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    let checkDate = year + '-' + month + '-' + day;
-
-    var temp = [];
-
-    // If AQI concentration exists in JSON
-    for (let i = 0; i < Object.keys(aqiInfo).length; i++) {
-        if (!(temp.includes(aqiInfo[i].ParameterName))) {
-            temp.push(aqiInfo[i].ParameterName);
-        }
-    }
+    var ozone = null;
+    var pm2_5 = null;
+    var pm10 = null;
 
     // For each current AQI forecast
-    for (let i = 0; i < 10; i++) {
-        var ozone = null;
-        var pm2_5 = null;
-        var pm10 = null;
-
-        // If todays date && parameter exists in set
-        if (aqiInfo[i].DateIssue === checkDate && temp.includes(aqiInfo[i].ParameterName)) {
-            if (aqiInfo[i].ParameterName === "O3") {
-                ozone = aqiInfo[i].AQI;
-            } else if (aqiInfo[i].ParameterName === "PM2.5") {
-                pm2_5 = aqiInfo[i].AQI;
-            } else if (aqiInfo[i].ParameterName === "PM10") {
-                pm10 = aqiInfo[i].AQI;
-            }
-        }
-
-        let overall = (ozone + pm2_5 + pm10) / 3;
-
-        return {
-            overall: overall,
-            ozone: ozone,
-            fine: pm2_5,
-            coarse: pm10,
-        }
-    }
-}
-
-const aqiCalc = (conc_i, type) => {
-    var conc_lo;
-    var conc_hi;
-    var aqi_lo;
-    var aqi_hi;
-
-    if (type === 'o3') {
-        if (conc_i <= 54.99) {
-            conc_lo = 0.00;
-            conc_hi = 54.99;
-            aqi_lo = 0;
-            aqi_hi = 50;
-        } else if (conc_i >= 55.0 && conc_i <= 70.99) {
-            conc_lo = 55.0;
-            conc_hi = 70.99;
-            aqi_lo = 51;
-            aqi_hi = 100;
-        } else if (conc_i >= 71.0 && conc_i <= 85.99) {
-            conc_lo = 71.0;
-            conc_hi = 85.99;
-            aqi_lo = 101;
-            aqi_hi = 150;
-        } else if (conc_i >= 86.0 && conc_i <= 105.99) {
-            conc_lo = 86.0;
-            conc_hi = 105.99;
-            aqi_lo = 151;
-            aqi_hi = 200;
-        } else if (conc_i >= 106.0 && conc_i <= 200.99) {
-            conc_lo = 106.0;
-            conc_hi = 200.99;
-            aqi_lo = 201;
-            aqi_hi = 300;
-        }
-    } else if (type === 'pm2_5') {
-        if (conc_i <= 12.0) {
-            conc_lo = 0.0;
-            conc_hi = 12.0;
-            aqi_lo = 0;
-            aqi_hi = 50;
-        } else if (conc_i >= 12.1 && conc_i <= 35.4) {
-            conc_lo = 12.1;
-            conc_hi = 35.4;
-            aqi_lo = 51;
-            aqi_hi = 100;
-        } else if (conc_i >= 35.5 && conc_i <= 55.4) {
-            conc_lo = 35.5;
-            conc_hi = 55.4;
-            aqi_lo = 101;
-            aqi_hi = 150;
-        } else if (conc_i >= 55.5 && conc_i <= 150.4) {
-            conc_lo = 55.5;
-            conc_hi = 150.4;
-            aqi_lo = 151;
-            aqi_hi = 200
-        } else if (conc_i >= 150.5 && conc_i <= 250.4) {
-            conc_lo = 150.5;
-            conc_hi = 250.4;
-            aqi_lo = 201;
-            aqi_hi = 300
-        } else if (conc_i >= 250.5 && conc_i <= 350.4) {
-            conc_lo = 250.5;
-            conc_hi = 350.4;
-            aqi_lo = 301;
-            aqi_hi = 400;
-        } else if (conc_i >= 350.5 && conc_i <= 500.4) {
-            conc_lo = 350.5;
-            conc_hi = 500.4;
-            aqi_lo = 401;
-            aqi_hi = 400;
-        }
-    } else if (type === 'pm10') {
-        if (conc_i <= 54.99) {
-            conc_lo = 0.0;
-            conc_hi = 54.99;
-            aqi_lo = 0;
-            aqi_hi = 50;
-        } else if (conc_i >= 55.0 && conc_i <= 154.99) {
-            conc_lo = 55.0;
-            conc_hi = 154.99;
-            aqi_lo = 51;
-            aqi_hi = 100;
-        } else if (conc_i >= 155.0 && conc_i <= 254.99) {
-            conc_lo = 155.0;
-            conc_hi = 254.99;
-            aqi_lo = 101;
-            aqi_hi = 150;
-        } else if (conc_i >= 255.0 && conc_i <= 354.99) {
-            conc_lo = 255.0;
-            conc_hi = 354.99;
-            aqi_lo = 151;
-            aqi_hi = 200;
-        } else if (conc_i >= 355.0 && conc_i <= 424.99) {
-            conc_lo = 355.0;
-            conc_hi = 424.99;
-            aqi_lo = 201;
-            aqi_hi = 300;
-        } else if (conc_i >= 425.0 && conc_i <= 504.99) {
-            conc_lo = 425.0;
-            conc_hi = 504.99;
-            aqi_lo = 301;
-            aqi_hi = 500;
-        } else if (conc_i >= 505.0 && conc_i <= 604.99) {
-            conc_lo = 505.0;
-            conc_hi = 604.99;
-            aqi_lo = 301;
-            aqi_hi = 500;
-        }
-    } else if (type ==='overall') {
-        if (conc_i === 1) {
-            return 50;
-        } else if (conc_i === 2) {
-            return 100;
-        } else if (conc_i === 3) {
-            return 150;
-        } else if (conc_i === 4) {
-            return 200;
-        } else if (conc_i === 5) {
-            return 300;
-        } else if (conc_i === 6) {
-            return 500;
+    for (let i = 0; i < Object.keys(aqiInfo).length; i++) {
+        if (aqiInfo[i].ParameterName === "O3") {
+            ozone = aqiInfo[i].AQI;
+        } else if (aqiInfo[i].ParameterName === "PM2.5") {
+            pm2_5 = aqiInfo[i].AQI;
+        } else if (aqiInfo[i].ParameterName === "PM10") {
+            pm10 = aqiInfo[i].AQI;
         }
     }
 
-    return ((aqi_hi - aqi_lo) / (conc_hi - conc_lo)) * (conc_i - conc_lo) + aqi_lo;
+    return {
+        overall: (ozone + pm2_5 + pm10) / 3,
+        ozone: ozone,
+        fine: pm2_5,
+        coarse: pm10,
+    }
 }
