@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import ReactLoading from 'react-loading';
 import '../../App.css';
 import Sun2 from '../assets/images/dataIcons/sun2.png';

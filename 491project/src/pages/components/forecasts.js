@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactLoading from 'react-loading';
 import '../../App.css';
 import { getHourly, getDaily } from '../utils/process';

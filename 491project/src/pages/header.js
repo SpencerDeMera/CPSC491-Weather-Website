@@ -1,5 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 import '../App.css';
 
 export default function Header() {
@@ -9,9 +8,9 @@ export default function Header() {
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">S N I P P E T</a>
 
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+                    {/* <button className="current-location-button">
+                        <p>{currLocation.name}, {currLocation.country}</p>
+                    </button> */}
                 </div>
             </nav>
         </div>

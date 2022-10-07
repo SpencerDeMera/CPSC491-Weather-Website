@@ -4,7 +4,7 @@ var newLon;
 var weatherInfo;
 var aqiInfo;
 
-export const setLocation = (flag) => {
+export const setCurrLocationFlag = (flag) => {
     if (flag) {
         currLocation = true;
     } else if (!flag) {
@@ -18,6 +18,8 @@ export const setCoords = (lat, lon) => {
     newLat = lat;
     newLon = lon;
 }
+
+export const getCoords = () => { return { lat: newLat, lon: newLon }; }
 
 export const getLocation = async () => {
     if (currLocation) {
@@ -39,7 +41,7 @@ export const getLocation = async () => {
             resolve(data);
         });
     }
-};
+}
 
 export const setWeather = (weatherData) => { weatherInfo = weatherData; }
 

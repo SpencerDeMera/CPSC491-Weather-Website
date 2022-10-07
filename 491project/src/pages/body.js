@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import ReactLoading from 'react-loading';
 import '../App.css';
 import Conditions from './components/conditions';
@@ -8,24 +7,38 @@ import Activities from './components/activities';
 import Details from './components/details';
 import Forecasts from './components/forecasts';
 import { getWeatherData, getAQIData } from './utils/ingest';
-import { getLocation, setWeather, setAqi } from './utils/process';
+import { getCurrLocationFlag, getLocation, setWeather, setAqi, setCoords, getCoords } from './utils/process';
 
-export default function Body() {
+export default function Body({ locationCoords, onLocationChange }) {
     const [weatherInfo, setWeatherInfo] = useState(null);
     const [aqiInfo, setAqiInfo] = useState(null);
-    
+    const [geoCoords, setGeoCoords] = useState(null);
+
     // Async load function for getting and setting weather data
-    window.onload = async () => {
-        const location = await getLocation();
+    window.load = async () => {
+        if (getCurrLocationFlag()) {
+            const location = await getLocation();
+            setGeoCoords(location);
 
-        const weatherData = await getWeatherData(location);
-        setWeatherInfo(weatherData);
+            const weatherData = await getWeatherData(location);
+            setWeatherInfo(weatherData);
 
-        const aqiData = await getAQIData(location);
-        setAqiInfo(aqiData);
+            const aqiData = await getAQIData(location);
+            setAqiInfo(aqiData);
+        } else {
+            const weatherData = await getWeatherData(locationCoords);
+            setWeatherInfo(weatherData);
+
+            const aqiData = await getAQIData(locationCoords);
+            setAqiInfo(aqiData);
+        }
     }
 
     if (weatherInfo && aqiInfo) {
+        setCoords(geoCoords);
+        onLocationChange(geoCoords);
+        console.log(locationCoords);
+
         setWeather(weatherInfo);
         setAqi(aqiInfo);
 

@@ -74,14 +74,11 @@ a.navbar-brand:visited {
 .sidebar a {
     display: block;
     color: var(--darkPrimaryText);
-    padding: 15px;
     text-decoration: none;
     font-weight: 600;
-}
-
-.sidebar a:hover:not(.active) {
-    background-color: var(--lightPrimaryBackgroundColor);
-    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    height: 60px;
 }
 
 div.content {
@@ -108,17 +105,72 @@ div.content {
     width: 100%;
 }
 
+.results-area {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.sidebar .search-results {
+    display: block;
+    color: var(--darkPrimaryText);
+    padding: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    height: 60px;
+}
+
+.sidebar .search-results:hover {
+    color: var(--darkPrimaryText);
+}
+
+.sidebar .search-results:hover:not(.active) {
+    background-color: var(--lightPrimaryBackgroundColor);
+    color: var(--darkPrimaryText);
+}
+
+.sidebar .saved-locs {
+    display: block;
+    color: var(--darkPrimaryText);
+    padding: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    height: 60px;
+}
+
+.sidebar .saved-locs:hover {
+    color: var(--darkPrimaryText);
+}
+
+.sidebar .saved-locs:hover:not(.active) {
+    background-color: var(--lightPrimaryBackgroundColor);
+    color: var(--darkPrimaryText);
+}
+
+.sidebar .locationName {
+    font-size: 15px;
+}
+
+.sidebar .locationSub {
+    margin-top: -40px;
+    font-size: 10px;
+}
+
+.sidebar .locationName:hover {
+    color: var(--darkPrimaryText);
+}
+
+.sidebar .locationSub:hover {
+    color: var(--darkPrimaryText);
+}
+
 .saved-title {
     padding-top: 5px;
-    padding-left: 10px;
+    padding-left: 15px;   
     font-size: 18px;
     font-weight: 600;
     color: var(--lightPrimaryBackgroundColor);
-}
-
-.saved-locs {
-    padding-bottom: 10px;
-    cursor: pointer;
 }
 
 /* ===== Body ===== */
