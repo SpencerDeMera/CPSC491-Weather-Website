@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import '../App.css';
 import { getGeoCodeData, setLocationData, getLocationData } from './utils/search';
-import { setCurrLocationFlag, setCoords, getCoords } from './utils/process';
+import { setCurrLocationFlag, setCoords } from './utils/process';
 
-export default function Sidebar({ locationCoords, onLocationChange }) {
+export default function Sidebar({ locationCoords, setCurrLocation }) {
     // ===== DEBUG =====
     const [cities, setCities] = useState([
         { name: 'Pomona', country: 'US', state: 'California' },
@@ -25,12 +25,7 @@ export default function Sidebar({ locationCoords, onLocationChange }) {
         sendLocation('');
     };
 
-    const handleSelect = (lat, lon) => {
-        setCurrLocationFlag(false);
-        setCoords(lat, lon);
-        console.log(lat);
-        onLocationChange(getCoords());
-    }
+    const handleSelect = (lat, lon) => setCurrLocation({...{ lat: lat, lon: lon }, lat, lon});
 
     if (geoData !== null || geoData !== undefined) {
         return (
@@ -54,7 +49,14 @@ export default function Sidebar({ locationCoords, onLocationChange }) {
     
                 <div className="results-area">
                     {geoData && geoData.map((location, index) => 
-                        <div key={index} className="search-results" onClick={() => handleSelect(location.lat, location.lon)}>
+                        <div key={index} 
+                            className="search-results" 
+                            onClick={() => {
+                                handleSelect(location.lat, location.lon);
+                                setCoords(location.lat, location.lon);
+                                setCurrLocationFlag(false);
+                            }}
+                        >
                             <a className="locationName">{location.name}</a>
                             <a className="locationSub">{location.state}, {location.country}</a>
                         </div>

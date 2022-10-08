@@ -7,25 +7,34 @@ import Activities from './components/activities';
 import Details from './components/details';
 import Forecasts from './components/forecasts';
 import { getWeatherData, getAQIData } from './utils/ingest';
-import { getCurrLocationFlag, getLocation, setWeather, setAqi, setCoords, getCoords } from './utils/process';
+import { getLocation, setWeather, setAqi, setCoords, getCoords, getCurrLocationFlag } from './utils/process';
 
-export default function Body({ locationCoords, onLocationChange }) {
+export default function Body({ locationCoords, setCurrLocation }) {
     const [weatherInfo, setWeatherInfo] = useState(null);
     const [aqiInfo, setAqiInfo] = useState(null);
     const [geoCoords, setGeoCoords] = useState(null);
 
+    // synchronous function
+    useEffect(() => {
+        window.addEventListener('storage', () => {
+            load();
+        });
+        load();
+    }, [locationCoords]);
+
     // Async load function for getting and setting weather data
-    window.load = async () => {
+    const load = async () => {
         if (getCurrLocationFlag()) {
             const location = await getLocation();
-            setGeoCoords(location);
 
             const weatherData = await getWeatherData(location);
             setWeatherInfo(weatherData);
 
             const aqiData = await getAQIData(location);
             setAqiInfo(aqiData);
-        } else {
+        } else if (!getCurrLocationFlag()) {
+            console.log(locationCoords);
+
             const weatherData = await getWeatherData(locationCoords);
             setWeatherInfo(weatherData);
 
@@ -35,10 +44,6 @@ export default function Body({ locationCoords, onLocationChange }) {
     }
 
     if (weatherInfo && aqiInfo) {
-        setCoords(geoCoords);
-        onLocationChange(geoCoords);
-        console.log(locationCoords);
-
         setWeather(weatherInfo);
         setAqi(aqiInfo);
 

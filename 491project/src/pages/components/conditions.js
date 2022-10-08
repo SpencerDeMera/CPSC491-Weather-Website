@@ -31,7 +31,7 @@ export default function Conditions() {
                             <div className="card shadow-sm">
                                 <img className="detail-icon" src={Sun2} alt=""/>
                                 <div className="sub-conditions-details">
-                                    <p className="condition-value">{currInfo.uvi}</p>
+                                    <p className="condition-value">{Math.round(currInfo.uvi)}</p>
                                     <p className="condition-description">UV Index</p>
                                 </div>
                             </div>

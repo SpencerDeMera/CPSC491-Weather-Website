@@ -10,9 +10,6 @@ import { setCurrLocationFlag } from './pages/utils/process';
 function App() {
   const [currLocation, setCurrLocation] = useState(null);
 
-  const useCurrLocationFlag = true;
-  setCurrLocationFlag(useCurrLocationFlag); // uses current location on load
-
   return (
     <div className="App">
       <header className="App-header">
@@ -20,9 +17,9 @@ function App() {
       </header>
 
       <section>
-        <Sidebar locationCoords={currLocation} onLocationChange={setCurrLocation}/>
+        <Sidebar locationCoords={currLocation} setCurrLocation={setCurrLocation}/>
 
-        <Body locationCoords={currLocation} onLocationChange={setCurrLocation}/>
+        <Body locationCoords={currLocation} setCurrLocation={setCurrLocation}/>
       </section>
 
       <footer>

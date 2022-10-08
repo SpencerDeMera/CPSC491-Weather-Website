@@ -10,16 +10,36 @@ export const setCurrLocationFlag = (flag) => {
     } else if (!flag) {
         currLocation = false;
     }
+
+    console.log('Set Current Location Flag to: ' + currLocation);
+    localStorage.setItem('currLocationFlag', currLocation);
 }
 
-export const getCurrLocationFlag = () => { return currLocation; }
+export const getCurrLocationFlag = () => { 
+    const flag = localStorage.getItem('currLocationFlag');
+    console.log('Current Location Flag is: ' + flag);
+
+    return flag; 
+}
 
 export const setCoords = (lat, lon) => {
     newLat = lat;
     newLon = lon;
+
+    const data = { lat: newLat, lon: newLon };
+
+    console.log('Set Current Location Coords to: ');
+    console.log(data);
+    localStorage.setItem('selectedLocation', JSON.stringify(data));
 }
 
-export const getCoords = () => { return { lat: newLat, lon: newLon }; }
+export const getCoords = () => { 
+    console.log('Grabbing Current Location Coords: ');
+    const data = JSON.parse(localStorage.getItem('selectedLocation'));
+    console.log(data);
+
+    return data; 
+}
 
 export const getLocation = async () => {
     if (currLocation) {
@@ -37,8 +57,7 @@ export const getLocation = async () => {
         });
     } else {
         return new Promise((resolve, reject) => {
-            let data = {'lat':  newLat, 'lon': newLon};
-            resolve(data);
+            resolve(getCoords());
         });
     }
 }

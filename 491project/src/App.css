@@ -38,6 +38,7 @@ img {
 .showcase {
     background-color: var(--lightPrimaryBackgroundColor);
     margin-top: 55px;
+    z-index: 5;
 }
 
 /* ===== Navbar ===== */
@@ -65,10 +66,11 @@ a.navbar-brand:visited {
     background-color: var(--primaryColor);
     position: fixed;
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     display: flex;
     align-items: center;
     flex-direction: column;
+    z-index: 10;
 }
 
 .sidebar a {
@@ -102,6 +104,7 @@ div.content {
 
 .saved-area {
     margin-top: 25px;
+    margin-bottom: 10px;
     width: 100%;
 }
 
