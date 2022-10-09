@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
 import Header from './pages/header';
 import Sidebar from './pages/sidebar';
