@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from './pages/header';
 import Sidebar from './pages/sidebar';
 import Body from './pages/body';
 import Footer from './pages/footer';
-import { setCurrLocationFlag } from './pages/utils/process';
+import { useState } from 'react';
 
 function App() {
-  const [currLocation, setCurrLocation] = useState(null);
+  const [currentLocation, setCurrentLocation] = useState({
+    "id": 0,
+    "name": "CSUF",
+    "state": "California",
+    "country": "US",
+    "lat": 33.88,
+    "lon": -117.88,
+  });
 
   return (
     <div className="App">
@@ -16,9 +22,13 @@ function App() {
       </header>
 
       <section>
-        <Sidebar locationCoords={currLocation} setCurrLocation={setCurrLocation}/>
-
-        <Body locationCoords={currLocation} setCurrLocation={setCurrLocation}/>
+        <Sidebar
+          currentLocation={currentLocation}
+          setCurrentLocation={setCurrentLocation}
+        />
+        <Body
+          currentLocation={currentLocation}
+        />
       </section>
 
       <footer>

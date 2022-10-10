@@ -10,10 +10,10 @@ let unitsSystem = 'imperial'; // defaults to imperial
 
 export const getWeatherData = async (location) => {
     const oneCallURL = `${ONECALL_URL}lat=${location.lat}&lon=${location.lon}&units=${unitsSystem}&appid=${OpenWeatherAPI_KEY}`;
-    const oenCallResponse = await fetch(oneCallURL); // fetches repsonse from API call and places into repsonse
-    var oneCallResult = await oenCallResponse.json(); // converts json to result variable
+    const oneCallResponse = await fetch(oneCallURL); // fetches repsonse from API call and places into repsonse
+    var oneCallResult = await oneCallResponse.json(); // converts json to result variable
     
-    if (oenCallResponse.ok) { // if response is ok
+    if (oneCallResponse.ok) { // if response is ok
         return oneCallResult;
     } else {
         return oneCallResult = null; // else if repsonse !ok return result as null

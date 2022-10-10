@@ -66,7 +66,7 @@ export const setWeather = (weatherData) => { weatherInfo = weatherData; }
 
 export const setAqi = (aqiData) => { aqiInfo = aqiData; }
 
-export const getCurrentInfo = () => {
+export const getCurrentInfo = (weatherInfo) => {
     let curr = weatherInfo.current;
     let day = weatherInfo.daily[0];
 
@@ -169,7 +169,7 @@ export const getDaily = () => {
     return daysData;
 }
 
-export const getUvi = () => {
+export const getUvi = (weatherInfo) => {
     let days = weatherInfo.daily;
     let uviData = [];
 
@@ -183,13 +183,13 @@ export const getUvi = () => {
     return uviData;
 }
 
-export const getAqiInfo = () => {
+export const getAqiInfo = (aqiInfo) => {
     var ozone = null;
     var pm2_5 = null;
     var pm10 = null;
 
     // For each current AQI forecast
-    for (let i = 0; i < Object.keys(aqiInfo).length; i++) {
+    for (let i = 0; i < aqiInfo.length; i++) {
         if (aqiInfo[i].ParameterName === "O3") {
             ozone = aqiInfo[i].AQI;
         } else if (aqiInfo[i].ParameterName === "PM2.5") {
