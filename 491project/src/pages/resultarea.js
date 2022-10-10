@@ -30,8 +30,13 @@ const ResultArea = ({
             key={index}
             onClick={() => handleSelect(index)}
           >
-              <a className="locationName">{location.name}</a>
+            <a className="locationName">{location.name}</a>
+            {location.state &&
               <a className="locationSub">{location.state}, {location.country}</a>
+            }
+            {!location.state &&
+              <a className="locationSub">{location.country}</a>
+            }
           </div>
       )}
       {/* handle if no search results */}
