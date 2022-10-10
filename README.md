@@ -1,14 +1,21 @@
 # Snippet Weather Itinerary 🌦️
 ### All-In-One Weather and Itinerary Web App
+### Status: In Development
 
 ### Author(s): Spencer DeMera, Mike Sim, and Kris Calma
 
 - CPSC-491: Senior Capstone Project in Computer Science
 - California State University Fullerton
 
----
-
 ## What is Snippet ?
 - Our software engineering project is a web app that allows users to get aggregate information about weather, itinerary planning, and various alerts for designated locations of their choosing. 
 - Users can get specified current, hourly, daily, and astronomical weather conditions and alerts based on their current or specified location. Additionally, various itinerary-related planning prompts and notification alerts are provided with the location currently being viewed. This project lives in the user's web browser and uses multiple APIs and public databases to collect and display the information mentioned above.
 - Overall we hope that Snippet becomes a hub for users to quickly view weather conditions, get weather and travel related alerts, and potentially plan trips.
+
+## Tools & Technologies Used
+
+* React
+* Javascript
+* HTML5
+* CSS3
+* Figma 
