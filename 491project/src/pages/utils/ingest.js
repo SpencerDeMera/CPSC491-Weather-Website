@@ -1,38 +1,36 @@
+import axios from 'axios';
+import { format } from 'date-fns';
+import { getCurrentInfo, getAqiInfo } from './process';
+
 const ONECALL_URL = 'https://api.openweathermap.org/data/2.5/onecall?';
-const AirNow_URL = 'https://www.airnowapi.org/aq/observation/latLong/current/?format=application/json';
+const AQINOW_URL = 'https://www.airnowapi.org/aq/observation/latLong/current/?format=application/json';
 const GEOCODE_URL = 'https://api.openweathermap.org/geo/1.0/direct?';
 
-let data = require('../../keys.json');
-const OpenWeatherAPI_KEY = data[0]['key'];
-const AirNowGovPI_KEY = data[1]['key'];
+const KEYS = require('../../keys.json')
+const ONECALL_KEY = KEYS[0]['key'];
+const AQINOW_KEY = KEYS[1]['key'];
 
-let unitsSystem = 'imperial'; // defaults to imperial
+export const getWeatherData = async (currentLocation, unitSystem) => {
+  try {
+    const response = await axios.get(`${ONECALL_URL}lat=${currentLocation.lat}&lon=${currentLocation.lon}&units=${unitSystem}&appid=${ONECALL_KEY}`);
+    const processed_data = getCurrentInfo(response.data);
+    return processed_data;
+  } catch (err) {
+    console.log(`ERROR: ${err.message}`);
+  }
 
-export const getWeatherData = async (location) => {
-    const oneCallURL = `${ONECALL_URL}lat=${location.lat}&lon=${location.lon}&units=${unitsSystem}&appid=${OpenWeatherAPI_KEY}`;
-    const oneCallResponse = await fetch(oneCallURL); // fetches repsonse from API call and places into repsonse
-    var oneCallResult = await oneCallResponse.json(); // converts json to result variable
-    
-    if (oneCallResponse.ok) { // if response is ok
-        return oneCallResult;
-    } else {
-        return oneCallResult = null; // else if repsonse !ok return result as null
-    }
+  return null;
 }
 
-export const getAQIData = async (location) => {
-    const date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
+export const getAQIData = async (currentLocation) => {
+  try {
+    const dateFormat = format(new Date(), 'yyyy-MM-dd');
+    const response = await axios.get(`${AQINOW_URL}&latitude=${currentLocation.lat}&longitude=${currentLocation.lon}&date=${dateFormat}&distance=25&API_KEY=${AQINOW_KEY}`);
+    const result = getAqiInfo(response.data);
+    return result;
+  } catch (err) {
+    console.log(`ERROR: ${err.message}`);
+  }
 
-    const airNowURL = `${AirNow_URL}&latitude=${location.lat}&longitude=${location.lon}&date=${year}-${month}-${day}&distance=25&API_KEY=${AirNowGovPI_KEY}`;
-    const airNowResponse = await fetch(airNowURL); // fetches repsonse from API call and places into repsonse
-    var airNowResult = await airNowResponse.json(); // converts json to result variable
-    
-    if (airNowResponse.ok) { // if response is ok
-        return airNowResult;
-    } else {
-        return airNowResult = null; // else if repsonse !ok return result as null
-    }
+  return null;
 }
