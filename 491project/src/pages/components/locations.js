@@ -3,6 +3,7 @@ import '../../App.css';
 
 export default function Locations() {
     return (
+      <div className="col-sm-6">
         <div className="card locat-info">
             <div className="card-body">
                 <div className="locatTitleBody">
@@ -23,5 +24,6 @@ export default function Locations() {
                 </div>
             </div>
         </div>
+      </div>
     );
 }
