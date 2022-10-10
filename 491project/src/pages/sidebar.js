@@ -12,7 +12,7 @@ const Sidebar = ({ currentLocation, setCurrentLocation }) => {
 
   useEffect(() => {
     localStorage.setItem('savedLocations', JSON.stringify(savedLocations));
-  });
+  }, [savedLocations]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
