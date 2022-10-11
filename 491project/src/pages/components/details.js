@@ -1,17 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactLoading from 'react-loading';
 import '../../App.css';
-import { getMinutely, getAqiData, getUvi } from '../utils/process';
+import { getMinutely, getAqiInfo, getUvi } from '../utils/process';
 
-export default function Details({ aqiData, uviData, minutelyData }) {
+export default function Details({ weatherData, aqiData }) {
+  let minutelyInfo = getMinutely(weatherData);
+  let aqiInfo = getAqiInfo(aqiData);
+  let uviInfo = getUvi(weatherData);
+  
   return (
     <div className="col-sm-12">
       <div className="card w-100 text-center mt-4 cond-details">
-        {!aqiData &&
+        {!aqiData && 
           <ReactLoading type={'spinningBubbles'} color={'#56BFB5'} height={50} width={50} />
         }
-        {aqiData &&
+        {aqiData && 
           <>
             <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item navItemCustom" role="presentation">
@@ -30,10 +33,10 @@ export default function Details({ aqiData, uviData, minutelyData }) {
                 </div>
                 <div className="tab-pane fade" id="aqi-tab-pane" role="tabpanel" aria-labelledby="aqi-tab" tabindex="0">
                     <p>Current Air Quality</p>
-                    <p>General AQI: {Math.round(aqiData.overall)}</p>
-                    <p>Ozone AQI: {Math.round(aqiData.ozone)}</p>
-                    <p>Fine Matter AQI: {Math.round(aqiData.fine)}</p>
-                    <p>Coarse Matter AQI: {Math.round(aqiData.coarse)}</p>
+                    <p>General AQI: {Math.round(aqiInfo.overall)}</p>
+                    <p>Ozone AQI: {Math.round(aqiInfo.ozone)}</p>
+                    <p>Fine Matter AQI: {Math.round(aqiInfo.fine)}</p>
+                    <p>Coarse Matter AQI: {Math.round(aqiInfo.coarse)}</p>
                 </div>
                 <div className="tab-pane fade" id="uvi-tab-pane" role="tabpanel" aria-labelledby="uvi-tab" tabindex="0">
                     <p>This Week's UV Outlook</p>

@@ -1,70 +1,17 @@
-var currLocation = true;
-var newLat;
-var newLon;
-var weatherInfo;
-var aqiInfo;
-
-export const setCurrLocationFlag = (flag) => {
-    if (flag) {
-        currLocation = true;
-    } else if (!flag) {
-        currLocation = false;
-    }
-
-    console.log('Set Current Location Flag to: ' + currLocation);
-    localStorage.setItem('currLocationFlag', currLocation);
-}
-
-export const getCurrLocationFlag = () => { 
-    const flag = localStorage.getItem('currLocationFlag');
-    console.log('Current Location Flag is: ' + flag);
-
-    return flag; 
-}
-
-export const setCoords = (lat, lon) => {
-    newLat = lat;
-    newLon = lon;
-
-    const data = { lat: newLat, lon: newLon };
-
-    console.log('Set Current Location Coords to: ');
-    console.log(data);
-    localStorage.setItem('selectedLocation', JSON.stringify(data));
-}
-
-export const getCoords = () => { 
-    console.log('Grabbing Current Location Coords: ');
-    const data = JSON.parse(localStorage.getItem('selectedLocation'));
-    console.log(data);
-
-    return data; 
-}
-
 export const getLocation = async () => {
-    if (currLocation) {
-        return new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition((position) => {
-                let tempLat = position.coords.latitude;
-                let tempLon = position.coords.longitude;
-    
-                let data = {'lat': tempLat, 'lon': tempLon};
-                resolve(data);
-            }, () => {
-                reject('ERROR');
-                alert('Snippet Needs Your Location');
-            }); 
-        });
-    } else {
-        return new Promise((resolve, reject) => {
-            resolve(getCoords());
-        });
-    }
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            let tempLat = position.coords.latitude;
+            let tempLon = position.coords.longitude;
+
+            let data = {lat: tempLat, lon: tempLon};
+            resolve(data);
+        }, () => {
+            reject('ERROR');
+            alert('Snippet Needs Your Location');
+        }); 
+    });
 }
-
-export const setWeather = (weatherData) => { weatherInfo = weatherData; }
-
-export const setAqi = (aqiData) => { aqiInfo = aqiData; }
 
 export const getCurrentInfo = (weatherInfo) => {
     let curr = weatherInfo.current;
@@ -97,9 +44,9 @@ export const getCurrentInfo = (weatherInfo) => {
     }
 }
 
-export const getMinutely = () => { return weatherInfo.minutely; }
+export const getMinutely = (weatherInfo) => { return weatherInfo.minutely; }
 
-export const getHourly = () => {
+export const getHourly = (weatherInfo) => {
     let hours = weatherInfo.hourly;
     let hoursData = [];
 
@@ -128,7 +75,7 @@ export const getHourly = () => {
     return hoursData;
 }
 
-export const getDaily = () => {
+export const getDaily = (weatherInfo) => {
     let days = weatherInfo.daily;
     let daysData = [];
 
