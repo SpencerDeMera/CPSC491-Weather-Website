@@ -206,3 +206,27 @@ export const getAqiInfo = (aqiInfo) => {
         coarse: pm10,
     }
 }
+
+export const processWeatherZoneUrl = (pointData) => {
+  return pointData.properties.county;
+}
+
+export const processWeatherZone = (zoneData) => {
+  return zoneData.properties.id;
+}
+
+export const processWeatherAlertData = (alertData) => {
+  const features = alertData.features;
+  var data = [];
+  
+  for (let i = 0; i < features.length; i++) {
+    data.push({
+      "event": features[i].properties.event,
+      "effDate": features[i].properties.effective,
+      "text": features[i].properties.parameters.NWSheadline[0],
+      "instruction": features[i].properties.instruction
+    });
+  }
+
+  return data;
+}

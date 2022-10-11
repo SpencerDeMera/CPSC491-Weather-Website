@@ -3,8 +3,6 @@ const SavedLocations = ({ savedLocations, setCurrentLocation }) => {
     setCurrentLocation(savedLocations[index])
   };
   
-  console.log(savedLocations);
-  
   return (
     <div className="saved-area">
       <div className="saved-title">

@@ -11,8 +11,8 @@ function App() {
     "name": "CSUF",
     "state": "California",
     "country": "US",
-    "lat": 33.88,
-    "lon": -117.88,
+    "lat": 31.39, //33.88
+    "lon":  -102.35, //-117.88
   });
 
   return (
