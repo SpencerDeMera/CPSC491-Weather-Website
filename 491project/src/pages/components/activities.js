@@ -1,6 +1,6 @@
 import SunIcon from '../assets/images/UVIsun.png';
 
-const activities = ({ currentLocation, events, setEvents }) => {
+export default function activities({ currentLocation, events, setEvents }) {
   return (
     <div className="col-sm-12">
       <div className="card w-100 locat-activities">
@@ -42,5 +42,3 @@ const activities = ({ currentLocation, events, setEvents }) => {
     </div>
   );
 }
-
-export default activities

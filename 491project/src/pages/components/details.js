@@ -4,7 +4,7 @@ import ReactLoading from 'react-loading';
 import '../../App.css';
 import { getMinutely, getAqiData, getUvi } from '../utils/process';
 
-export default function Details({ aqiData, uviData, minutelyData }) {
+export default function Details({ weatherData, aqiData, }) {
   return (
     <div className="col-sm-12">
       <div className="card w-100 text-center mt-4 cond-details">

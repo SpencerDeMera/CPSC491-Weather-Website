@@ -1,6 +1,6 @@
-import SearchBox from "./searchbox";
-import ResultArea from "./resultarea";
-import SavedLocations from "./savedlocations";
+import SearchBox from "./components/searchbox";
+import ResultArea from "./components/resultarea";
+import SavedLocations from "./components/savedlocations";
 import { getGeoCodeData } from "./utils/search";
 import { useEffect, useState } from 'react';
 

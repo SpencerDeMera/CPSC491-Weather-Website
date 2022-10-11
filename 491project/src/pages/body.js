@@ -51,9 +51,8 @@ export default function Body({ currentLocation }) {
                   />
                   <Activities />
                   <Details
+                    weatherData={weatherData}
                     aqiData={aqiData}
-                    uviData={weatherData.daily}
-                    minutelyData={weatherData.minutely}
                   />
                   <Forecasts />
                 </div>

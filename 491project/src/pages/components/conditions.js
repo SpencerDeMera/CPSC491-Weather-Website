@@ -5,7 +5,7 @@ import Wind2 from '../assets/images/dataIcons/wind2.png';
 import Clouds2 from '../assets/images/dataIcons/clouds2.png';
 import Sunset2 from '../assets/images/dataIcons/sunset2.png';
 
-const Conditions = ({ weatherData }) => {
+export default function Conditions ({ weatherData }) {
   const iconURL = `https://openweathermap.org/img/wn/${weatherData.weather_icon}@2x.png`;
 
   return (
@@ -73,5 +73,3 @@ const Conditions = ({ weatherData }) => {
     </div>
   )
 }
-
-export default Conditions
