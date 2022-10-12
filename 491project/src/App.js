@@ -3,17 +3,27 @@ import Header from './pages/header';
 import Sidebar from './pages/sidebar';
 import Body from './pages/body';
 import Footer from './pages/footer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getLocation } from './pages/utils/process';
 
 function App() {
-  const [currentLocation, setCurrentLocation] = useState({
-    "id": 0,
-    "name": "CSUF",
-    "state": "California",
-    "country": "US",
-    "lat": 31.39, //33.88
-    "lon":  -102.35, //-117.88
-  });
+  const [currentLocation, setCurrentLocation] = useState(null);
+
+  useEffect(() => {
+    const load = async () => {
+      const location = await getLocation();
+      setCurrentLocation({
+        id: 0,
+        name: "",
+        state: "",
+        country: "",
+        lat: location.lat,
+        lon: location.lon
+      });
+    }
+
+    load();
+  }, []);
 
   return (
     <div className="App">

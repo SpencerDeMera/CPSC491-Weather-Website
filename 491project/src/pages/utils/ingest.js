@@ -1,9 +1,6 @@
 import axios from 'axios';
 import { format } from 'date-fns';
-import { 
-  getCurrentInfo, getAqiInfo, 
-  processWeatherZoneUrl, processWeatherZone, processWeatherAlertData
-} from './process';
+import { getAqiInfo, processWeatherZoneUrl, processWeatherZone, processWeatherAlertData } from './process';
 
 const ONECALL_URL = 'https://api.openweathermap.org/data/2.5/onecall?';
 const AQINOW_URL = 'https://www.airnowapi.org/aq/observation/latLong/current/?format=application/json';
@@ -17,8 +14,7 @@ const AQINOW_KEY = KEYS[1]['key'];
 export const getWeatherData = async (currentLocation, unitSystem) => {
   try {
     const response = await axios.get(`${ONECALL_URL}lat=${currentLocation.lat}&lon=${currentLocation.lon}&units=${unitSystem}&appid=${ONECALL_KEY}`);
-    const processed_data = getCurrentInfo(response.data);
-    return processed_data;
+    return response.data;
   } catch (err) {
     console.log(`ERROR: ${err.message}`);
   }
