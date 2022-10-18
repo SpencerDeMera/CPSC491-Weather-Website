@@ -35,9 +35,10 @@
             * A daily forecast outlook for the next 7 days plus the current day. 
 
 ## Tools & Technologies Used
-
+* Figma
 * React
+* Bootstrap
 * Javascript
 * HTML5
 * CSS3
-* Figma 
+
