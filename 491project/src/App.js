@@ -3,10 +3,10 @@ import Header from './pages/header';
 import Sidebar from './pages/sidebar';
 import Body from './pages/body';
 import Footer from './pages/footer';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getLocation } from './pages/utils/process';
 
-function App() {
+export default function App() {
   const [currentLocation, setCurrentLocation] = useState(null);
 
   useEffect(() => {
@@ -47,5 +47,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

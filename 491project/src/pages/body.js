@@ -7,7 +7,7 @@ import ReactLoading from 'react-loading';
 import { useEffect, useState } from 'react';
 import { getAQIData, getWeatherAlertData, getWeatherData } from './utils/ingest';
 
-export default function Body({ currentLocation }) {
+export default function Body({currentLocation}) {
   const [weatherData, setWeatherData] = useState(null);
   const [aqiData, setAqiData] = useState(null);
   const [alertsData, setAlertsData] = useState(null);
@@ -43,24 +43,21 @@ export default function Body({ currentLocation }) {
             {currentLocation && weatherData &&
               <div className="container-fluid mt-4">
                 <div className="row d-flex">
-                  <Conditions
-                    weatherData={weatherData}
-                  />
-                  <Locations
-                    alertsData={alertsData}
-                  />
+                  <Conditions weatherData={weatherData}/>
+                  
+                  <Locations alertsData={alertsData}/>
+                  
                   <Activities />
-                  <Details
-                    weatherData={weatherData}
-                    aqiData={aqiData}
-                  />
-                  <Forecasts />
+                  
+                  <Details weatherData={weatherData} aqiData={aqiData}/>
+                  
+                  <Forecasts weatherData={weatherData}/>
                 </div>
               </div>
-            }
-          </div>
+            </div>
+          }
         </div>
+      </div>
     </div>
-
   );
 }

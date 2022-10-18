@@ -1,4 +1,4 @@
-const SavedLocations = ({ savedLocations, setCurrentLocation }) => {
+export default function SavedLocations({ savedLocations, setCurrentLocation }) {
   const handleSelect = (index) => {
     setCurrentLocation(savedLocations[index])
   };
@@ -23,5 +23,3 @@ const SavedLocations = ({ savedLocations, setCurrentLocation }) => {
     </div>
   )
 }
-
-export default SavedLocations

@@ -1,4 +1,4 @@
-const SearchBox = ({searchValue, setSearchValue, handleSubmit}) => {
+export default function SearchBox ({searchValue, setSearchValue, handleSubmit}) {
   return (
     <div className="search-area">
         <form className="input-group mb-3" onSubmit={handleSubmit}>
@@ -19,5 +19,3 @@ const SearchBox = ({searchValue, setSearchValue, handleSubmit}) => {
     </div>
   )
 }
-
-export default SearchBox

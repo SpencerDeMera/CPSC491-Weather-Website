@@ -1,19 +1,19 @@
-const ResultArea = ({
+export default function ResultArea({
   searchResults, setSearchResults,
   savedLocations, setSavedLocations,
   setCurrentLocation
-}) => {
+}) {
   
   const handleSelect = (index) => {
     const id = savedLocations.length ? savedLocations[savedLocations.length - 1].id + 1 : 1;
     const selectedLocation = searchResults[index]
     const newSavedLocation = {
-      "id": id,
-      "name": selectedLocation.name,
-      "state": selectedLocation.state,
-      "country": selectedLocation.country,
-      "lat": selectedLocation.lat,
-      "lon": selectedLocation.lon,
+      id: id,
+      name: selectedLocation.name,
+      state: selectedLocation.state,
+      country: selectedLocation.country,
+      lat: selectedLocation.lat,
+      lon: selectedLocation.lon,
     };
 
     const savedLocationList = [...savedLocations, newSavedLocation];
@@ -43,5 +43,3 @@ const ResultArea = ({
     </div>
   )
 }
-
-export default ResultArea

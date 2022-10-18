@@ -1,16 +1,20 @@
 import ReactLoading from 'react-loading';
-import { eachDayOfInterval } from 'date-fns';
 import { getHourly, getDaily } from '../utils/process';
 
-export default function Forecasts({ hourlyData, dailyData }) {
+export default function Forecasts({weatherData}) {
+  let hourlyInfo = getHourly(weatherData);
+  let dailyInfo = getDaily(weatherData);
+  
   return (
     <>
-    {(!hourlyData || !dailyData) && 
-      <div className="card w-100 text-center mt-4 cond-details">
+    {(!hourlyInfo || !dailyInfo) && 
+      <div className="col-sm-12">
+        <div className="card w-100 text-center mt-4 cond-details">
           <ReactLoading type={'spinningBubbles'} color={'#56BFB5'} height={50} width={50} />
+        </div>
       </div>
     }
-    {hourlyData && dailyData &&
+    {hourlyInfo && dailyInfo &&
       <div className="col-sm-12">
         <div className="card w-100 text-center mt-4 forecasting">
             <ul className="nav nav-tabs" id="myTab" role="tablist">
