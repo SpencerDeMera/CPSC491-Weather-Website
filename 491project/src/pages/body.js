@@ -54,8 +54,7 @@ export default function Body({currentLocation}) {
                   <Forecasts weatherData={weatherData}/>
                 </div>
               </div>
-            </div>
-          }
+            }
         </div>
       </div>
     </div>
