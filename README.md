@@ -1,6 +1,8 @@
 # **Snippet Weather Itinerary 🌦️**
 **All-In-One Weather and Itinerary Web App**
+<br>
 **Status: In Development**
+<br>
 **Live @ <>**
 
 ### Author(s): Spencer DeMera, Mike Sim, and Kris Calma
