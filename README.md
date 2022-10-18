@@ -1,4 +1,4 @@
-**Snippet Weather Itinerary 🌦️**
+# **Snippet Weather Itinerary 🌦️**
 ### All-In-One Weather and Itinerary Web App
 ### Status: In Development
 ### Live @ <>
