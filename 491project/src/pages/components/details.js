@@ -1,20 +1,19 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
-import '../../App.css';
-import { getMinutely, getAqiInfo, getUvi } from '../utils/process';
+import { getAqiInfo, getUvi, getMinutely } from '../utils/process';
 
 export default function Details({ weatherData, aqiData }) {
-  let minutelyInfo = getMinutely(weatherData);
-  let aqiInfo = getAqiInfo(aqiData);
-  let uviInfo = getUvi(weatherData);
-  
+  const aqiInfo = getAqiInfo(aqiData);
+  const uviInfo = getUvi(weatherData);
+  const minutelyInfo = getMinutely(weatherData);
+
   return (
     <div className="col-sm-12">
       <div className="card w-100 text-center mt-4 cond-details">
-        {!aqiData && 
+        {!aqiInfo &&
           <ReactLoading type={'spinningBubbles'} color={'#56BFB5'} height={50} width={50} />
         }
-        {aqiData && 
+        {aqiInfo &&
           <>
             <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item navItemCustom" role="presentation">

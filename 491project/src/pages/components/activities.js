@@ -1,6 +1,6 @@
 import SunIcon from '../assets/images/UVIsun.png';
 
-export default function Activities() {
+export default function activities({ currentLocation, events, setEvents }) {
   return (
     <div className="col-sm-12">
       <div className="card w-100 locat-activities">

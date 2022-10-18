@@ -12,7 +12,12 @@ export default function SavedLocations({ savedLocations, setCurrentLocation }) {
       {savedLocations && savedLocations.map((location, index) => 
           <div key={index} className="saved-locs" onClick={() => handleSelect(index)} >
               <a className="locationName">{location.name}</a>
-              <a className="locationSub">{location.state}, {location.country}</a>
+              {location.state && 
+                <a className="locationSub">{location.state}, {location.country}</a>
+              }
+              {!location.state &&
+                <a className="locationSub">{location.country}</a>
+              }
           </div>
       )}
     </div>
