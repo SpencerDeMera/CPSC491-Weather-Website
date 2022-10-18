@@ -4,7 +4,6 @@ import { getAqiInfo, processWeatherZoneUrl, processWeatherZone, processWeatherAl
 
 const ONECALL_URL = 'https://api.openweathermap.org/data/2.5/onecall?';
 const AQINOW_URL = 'https://www.airnowapi.org/aq/observation/latLong/current/?format=application/json';
-const GEOCODE_URL = 'https://api.openweathermap.org/geo/1.0/direct?';
 const NWS_URL = 'https://api.weather.gov';
 
 const KEYS = require('../../keys.json')
