@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
-import { getAqiInfo, getUvi, getMinutely } from '../utils/process';
+import { getUvi, getMinutely } from '../utils/process';
 
 export default function Details({ weatherData, aqiData }) {
-  const aqiInfo = getAqiInfo(aqiData);
   const uviInfo = getUvi(weatherData);
   const minutelyInfo = getMinutely(weatherData);
 
   return (
     <div className="col-sm-12">
       <div className="card w-100 text-center mt-4 cond-details">
-        {!aqiInfo &&
+        {!aqiData &&
           <ReactLoading type={'spinningBubbles'} color={'#56BFB5'} height={50} width={50} />
         }
-        {aqiInfo &&
+        {aqiData &&
           <>
             <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item navItemCustom" role="presentation">
@@ -32,10 +31,10 @@ export default function Details({ weatherData, aqiData }) {
                 </div>
                 <div className="tab-pane fade" id="aqi-tab-pane" role="tabpanel" aria-labelledby="aqi-tab" tabindex="0">
                     <p>Current Air Quality</p>
-                    <p>General AQI: {Math.round(aqiInfo.overall)}</p>
-                    <p>Ozone AQI: {Math.round(aqiInfo.ozone)}</p>
-                    <p>Fine Matter AQI: {Math.round(aqiInfo.fine)}</p>
-                    <p>Coarse Matter AQI: {Math.round(aqiInfo.coarse)}</p>
+                    <p>General AQI: {Math.round(aqiData.overall)}</p>
+                    <p>Ozone AQI: {Math.round(aqiData.ozone)}</p>
+                    <p>Fine Matter AQI: {Math.round(aqiData.fine)}</p>
+                    <p>Coarse Matter AQI: {Math.round(aqiData.coarse)}</p>
                 </div>
                 <div className="tab-pane fade" id="uvi-tab-pane" role="tabpanel" aria-labelledby="uvi-tab" tabindex="0">
                     <p>This Week's UV Outlook</p>
