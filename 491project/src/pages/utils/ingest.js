@@ -35,6 +35,10 @@ export const getAQIData = async (currentLocation) => {
 }
 
 export const getWeatherAlertData = async (currentLocation) => {
+  // Getting weather alerts requires getting the weather zone url first
+  // Then, get the zone from the weather zone url
+  // Finally, get the alerts using the zone
+  // TODO: Consider WeatherBit API to get alerts in EU and Israel
   try {
     const resp_url = await axios.get(`${NWS_URL}/points/${currentLocation.lat},${currentLocation.lon}`)
     const result_url = await processWeatherZoneUrl(resp_url.data);
