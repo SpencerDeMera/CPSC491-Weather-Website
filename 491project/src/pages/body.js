@@ -40,7 +40,7 @@ export default function Body({currentLocation}) {
             {!currentLocation &&
               <ReactLoading type={'spinningBubbles'} color={'#56BFB5'} height={200} width={200} />
             }
-            {currentLocation && weatherData &&
+            {currentLocation && weatherData && aqiData &&
               <div className="container-fluid mt-4">
                 <div className="row d-flex">
                   <Conditions weatherData={weatherData}/>
