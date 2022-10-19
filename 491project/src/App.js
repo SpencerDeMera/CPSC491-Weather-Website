@@ -32,13 +32,8 @@ export default function App() {
       </header>
 
       <section>
-        <Sidebar
-          currentLocation={currentLocation}
-          setCurrentLocation={setCurrentLocation}
-        />
-        <Body
-          currentLocation={currentLocation}
-        />
+        <Sidebar setCurrentLocation={setCurrentLocation} />
+        <Body currentLocation={currentLocation} />
       </section>
 
       <footer>
