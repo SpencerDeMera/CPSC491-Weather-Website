@@ -1,16 +1,32 @@
 export const getLocation = async () => {
   return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition((position) => {
-          let tempLat = position.coords.latitude;
-          let tempLon = position.coords.longitude;
+    navigator.geolocation.getCurrentPosition((position) => {
+      let tempLat = position.coords.latitude;
+      let tempLon = position.coords.longitude;
 
-          let data = {lat: tempLat, lon: tempLon};
-          resolve(data);
-      }, () => {
-          reject('ERROR');
-          alert('Snippet Needs Your Location');
-      }); 
+      let data = {lat: tempLat, lon: tempLon};
+      resolve(data);
+    }, () => {
+      reject('ERROR');
+      alert('Snippet Needs Your Location');
+    }); 
   });
+}
+
+const changeTimeZone = (date, timeZone) => {
+  if (typeof date === 'stringify') {
+    return new Date(
+      new Date(date).toLocaleString('en-US', {
+        timeZone,
+      }),
+    );
+  }
+
+  return new Date(
+    date.toLocaleString('en-US', {
+      timeZone,
+    }),
+  )
 }
 
 export const getCurrentInfo = (weatherInfo) => {
@@ -18,29 +34,31 @@ export const getCurrentInfo = (weatherInfo) => {
   let day = weatherInfo.daily[0];
 
   let sunriseTime = new Date(curr.sunrise * 1000);
+  sunriseTime = changeTimeZone(sunriseTime, weatherInfo.timezone);
   sunriseTime = sunriseTime.toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'});
   let sunsetTime = new Date(curr.sunset * 1000);
+  sunsetTime = changeTimeZone(sunsetTime, weatherInfo.timezone);
   sunsetTime = sunsetTime.toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'});
 
   return {
-      dt: curr.dt,
-      sunrise: sunriseTime,
-      sunset: sunsetTime,
-      temp: curr.temp,
-      feels_like: curr.feels_like,
-      pressure: curr.pressure,
-      humidity: curr.humidity,
-      dew_point: curr.dew_point,
-      uvi: curr.uvi,
-      clouds: curr.clouds,
-      precip: day.pop,
-      visibility: curr.visibility,
-      wind_speed: curr.wind_speed,
-      wind_deg: curr.wind_deg,
-      weather_id: curr.weather[0].id,
-      weather_main: curr.weather[0].main,
-      weather_descritpion: curr.weather[0].description,
-      weather_icon: curr.weather[0].icon,
+    dt: curr.dt,
+    sunrise: sunriseTime,
+    sunset: sunsetTime,
+    temp: curr.temp,
+    feels_like: curr.feels_like,
+    pressure: curr.pressure,
+    humidity: curr.humidity,
+    dew_point: curr.dew_point,
+    uvi: curr.uvi,
+    clouds: curr.clouds,
+    precip: day.pop,
+    visibility: curr.visibility,
+    wind_speed: curr.wind_speed,
+    wind_deg: curr.wind_deg,
+    weather_id: curr.weather[0].id,
+    weather_main: curr.weather[0].main,
+    weather_descritpion: curr.weather[0].description,
+    weather_icon: curr.weather[0].icon,
   }
 }
 
@@ -51,25 +69,25 @@ export const getHourly = (weatherInfo) => {
   let hoursData = [];
 
   for (let i = 0; i < 48; i++) {
-      hoursData.push({
-          dt: hours[i].dt,
-          temp: hours[i].temp,
-          feels_like: hours[i].feels_like,
-          pressure: hours[i].pressure,
-          humidity: hours[i].humidity,
-          dew_point: hours[i].dew_point,
-          uvi: hours[i].uvi,
-          clouds: hours[i].clouds,
-          precip: hours[i].pop,
-          visibility: hours[i].visibility,
-          wind_speed: hours[i].wind_speed,
-          wind_deg: hours[i].wind_deg,
-          wind_gust: hours[i].wind_gust,
-          weather_id: hours[i].weather[0].id,
-          weather_main: hours[i].weather[0].main,
-          weather_description: hours[i].weather[0].description,
-          weather_icon: hours[i].weather[0].icon,
-      });
+    hoursData.push({
+      dt: hours[i].dt,
+      temp: hours[i].temp,
+      feels_like: hours[i].feels_like,
+      pressure: hours[i].pressure,
+      humidity: hours[i].humidity,
+      dew_point: hours[i].dew_point,
+      uvi: hours[i].uvi,
+      clouds: hours[i].clouds,
+      precip: hours[i].pop,
+      visibility: hours[i].visibility,
+      wind_speed: hours[i].wind_speed,
+      wind_deg: hours[i].wind_deg,
+      wind_gust: hours[i].wind_gust,
+      weather_id: hours[i].weather[0].id,
+      weather_main: hours[i].weather[0].main,
+      weather_description: hours[i].weather[0].description,
+      weather_icon: hours[i].weather[0].icon,
+    });
   }
 
   return hoursData;
@@ -80,37 +98,37 @@ export const getDaily = (weatherInfo) => {
   let daysData = [];
 
   for (let i = 0; i < 8; i++) {
-      daysData.push({
-          dt: days[i].dt,
-          sunrise: days[i].sunrise,
-          sunset: days[i].sunset,
-          moonrise: days[i].moonrise,
-          moonset: days[i].moonset,
-          moon_phase: days[i].moon_phase,
-          temp_day: days[i].temp.day,
-          temp_min: days[i].temp.min,
-          temp_max: days[i].temp.max,
-          temp_night: days[i].temp.night,
-          temp_eve: days[i].temp.eve,
-          temp_morn: days[i].temp.morn,
-          feels_like_day: days[i].feels_like.day,
-          feels_like_night: days[i].feels_like.night,
-          feels_like_eve: days[i].feels_like.eve,
-          feels_like_morn: days[i].feels_like.morn,
-          pressure: days[i].pressure,
-          humidity: days[i].humidity,
-          dew_point: days[i].dew_point,
-          uvi: days[i].uvi,
-          clouds: days[i].clouds,
-          precip: days[i].pop,
-          wind_speed: days[i].wind_speed,
-          wind_deg: days[i].wind_deg,
-          wind_gust: days[i].wind_gust,
-          weather_id: days[i].weather[0].id,
-          weather_main: days[i].weather[0].main,
-          weather_description: days[i].weather[0].description,
-          weather_icon: days[i].weather[0].icon,
-      });
+    daysData.push({
+      dt: days[i].dt,
+      sunrise: days[i].sunrise,
+      sunset: days[i].sunset,
+      moonrise: days[i].moonrise,
+      moonset: days[i].moonset,
+      moon_phase: days[i].moon_phase,
+      temp_day: days[i].temp.day,
+      temp_min: days[i].temp.min,
+      temp_max: days[i].temp.max,
+      temp_night: days[i].temp.night,
+      temp_eve: days[i].temp.eve,
+      temp_morn: days[i].temp.morn,
+      feels_like_day: days[i].feels_like.day,
+      feels_like_night: days[i].feels_like.night,
+      feels_like_eve: days[i].feels_like.eve,
+      feels_like_morn: days[i].feels_like.morn,
+      pressure: days[i].pressure,
+      humidity: days[i].humidity,
+      dew_point: days[i].dew_point,
+      uvi: days[i].uvi,
+      clouds: days[i].clouds,
+      precip: days[i].pop,
+      wind_speed: days[i].wind_speed,
+      wind_deg: days[i].wind_deg,
+      wind_gust: days[i].wind_gust,
+      weather_id: days[i].weather[0].id,
+      weather_main: days[i].weather[0].main,
+      weather_description: days[i].weather[0].description,
+      weather_icon: days[i].weather[0].icon,
+    });
   }
 
   return daysData;
@@ -121,10 +139,10 @@ export const getUvi = (weatherInfo) => {
   let uviData = [];
 
   for (let i = 0; i < 8; i++) {
-      uviData.push({
-          dt: days[i].dt,
-          uvi: days[i].uvi,
-      });
+    uviData.push({
+      dt: days[i].dt,
+      uvi: days[i].uvi,
+    });
   }
 
   return uviData;
@@ -137,20 +155,20 @@ export const getAqiInfo = (aqiInfo) => {
 
   // For each current AQI forecast
   for (let i = 0; i < aqiInfo.length; i++) {
-      if (aqiInfo[i].ParameterName === "O3") {
-          ozone = aqiInfo[i].AQI;
-      } else if (aqiInfo[i].ParameterName === "PM2.5") {
-          pm2_5 = aqiInfo[i].AQI;
-      } else if (aqiInfo[i].ParameterName === "PM10") {
-          pm10 = aqiInfo[i].AQI;
-      }
+    if (aqiInfo[i].ParameterName === "O3") {
+      ozone = aqiInfo[i].AQI;
+    } else if (aqiInfo[i].ParameterName === "PM2.5") {
+      pm2_5 = aqiInfo[i].AQI;
+    } else if (aqiInfo[i].ParameterName === "PM10") {
+      pm10 = aqiInfo[i].AQI;  
+    }
   }
 
   return {
-      overall: (ozone + pm2_5 + pm10) / 3,
-      ozone: ozone,
-      fine: pm2_5,
-      coarse: pm10,
+    overall: (ozone + pm2_5 + pm10) / 3,
+    ozone: ozone,
+    fine: pm2_5,
+    coarse: pm10,
   }
 }
 

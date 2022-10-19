@@ -35,26 +35,26 @@ export default function Body({currentLocation}) {
 
   return (
     <div className="showcase">
-        <div className="content">
-          <div className="main-body">
-            {!currentLocation &&
-              <ReactLoading type={'spinningBubbles'} color={'#56BFB5'} height={200} width={200} />
-            }
-            {currentLocation && weatherData && aqiData &&
-              <div className="container-fluid mt-4">
-                <div className="row d-flex">
-                  <Conditions weatherData={weatherData}/>
-                  
-                  <Locations alertsData={alertsData}/>
-                  
-                  <Activities />
-                  
-                  <Details weatherData={weatherData} aqiData={aqiData}/>
-                  
-                  <Forecasts weatherData={weatherData}/>
-                </div>
+      <div className="content">
+        <div className="main-body">
+          {!currentLocation &&
+            <ReactLoading type={'spinningBubbles'} color={'#56BFB5'} height={200} width={200} />
+          }
+          {currentLocation && weatherData && aqiData &&
+            <div className="container-fluid mt-4">
+              <div className="row d-flex">
+                <Conditions weatherData={weatherData}/>
+                
+                <Locations alertsData={alertsData}/>
+                
+                <Activities />
+                
+                <Details weatherData={weatherData} aqiData={aqiData}/>
+                
+                <Forecasts weatherData={weatherData}/>
               </div>
-            }
+            </div>
+          }
         </div>
       </div>
     </div>

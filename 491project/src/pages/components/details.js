@@ -3,8 +3,8 @@ import ReactLoading from 'react-loading';
 import { getUvi, getMinutely } from '../utils/process';
 
 export default function Details({ weatherData, aqiData }) {
-  const uviInfo = getUvi(weatherData);
   const minutelyInfo = getMinutely(weatherData);
+  const uviInfo = getUvi(weatherData);
 
   return (
     <div className="col-sm-12">

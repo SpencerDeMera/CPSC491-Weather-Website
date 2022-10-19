@@ -27,6 +27,7 @@ export const getAQIData = async (currentLocation) => {
     const response = await axios.get(`${AQINOW_URL}&latitude=${currentLocation.lat}&longitude=${currentLocation.lon}&date=${dateFormat}&distance=25&API_KEY=${AQINOW_KEY}`);
     const result = getAqiInfo(response.data);
     return result;
+    // return response.data;
   } catch (err) {
     console.log(`ERROR: ${err.message}`);
   }
