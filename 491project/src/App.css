@@ -9,6 +9,24 @@
     --lightPrimaryText: #EBFFF9;
     --darkPrimaryText: #4C5A77;
     --lightGrayText: #ADADAD;
+
+    --aqiGreen: rgb(0, 226, 11);
+    --aqiYellow: rgb(224, 209, 0);
+    --aqiOrange: rgb(230, 138, 0);
+    --aqiRed: rgb(214, 0, 18);
+    --aqiPurple: rgb(212, 0, 219);
+
+    --uviGreen: rgb(0, 228, 0);
+    --uviLime: rgb(156, 240, 1);
+    --uviYellow: rgb(236, 221, 0);
+    --uviYellowOrange: rgb(243, 178, 0);
+    --uviOrange: rgb(241, 145, 0);
+    --uviBloodOrange: rgb(236, 67, 0);
+    --uviRed: rgb(228, 0, 19);
+    --uviDarkRed: rgb(235, 0, 70);
+    --uviRedPink: rgb(238, 0, 131);
+    --uviPink: rgb(231, 0, 200);
+    --uviViolet: rgb(195, 0, 255);
 }
 
 /* ===== Attributes ===== */
@@ -19,8 +37,13 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html {
+    background-color: var(--lightPrimaryBackgroundColor);
+}
+
 body {
     margin: 0;
+    background-color: var(--lightPrimaryBackgroundColor);
 }
 
 ul {
@@ -36,9 +59,15 @@ img {
 }
 
 .showcase {
-    background-color: var(--lightPrimaryBackgroundColor);
     margin-top: 55px;
     z-index: 5;
+    display: flex;
+    justify-content: center;
+    background-color: var(--lightPrimaryBackgroundColor);
+}
+
+.mainBody {
+    max-width: 1400px;
 }
 
 /* ===== Navbar ===== */
@@ -196,18 +225,15 @@ div.content {
 .col-sm-6 {
     display: flex;
     justify-content: center;
-    border: solid 2px blue;
 }
 
 .col-sm-12 {
     display: flex;
     justify-content: center;
-    border: solid 2px blue;
 }
 
 .mainBox {
     width: 24rem;
-    border: solid 2px blue;
 }
 
 .curr-conditions {
@@ -323,6 +349,7 @@ div.content {
 /* ===== Info & activity Card(s) ===== */
 .locat-info {
     background-color: white;
+    width: 100%;
 }
 
 .locat-activities {
@@ -421,7 +448,308 @@ div.content {
 }
 
 /* ===== Precip, AQI, UVI Info ===== */
+.detailsBody {
+    height: 165px;
+}
 
+.detailsTitle {
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.aqi-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aqiBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aqiRing-green {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    border: solid 12px var(--aqiGreen);
+    padding: 0px;
+    line-height: 0%;
+}
+
+.aqiRing-yellow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    border: solid 12px var(--aqiYellow);
+    padding: 0px;
+    line-height: 0%;
+}
+
+.aqiRing-orange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    border: solid 12px var(--aqiOrange);
+    padding: 0px;
+    line-height: 0%;
+}
+
+.aqiRing-red {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    border: solid 12px var(--aqiRed);
+    padding: 0px;
+    line-height: 0%;
+}
+
+.aqiRing-purple {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    border: solid 12px var(--aqiPurple);
+    padding: 0px;
+    line-height: 0%;
+}
+
+.aqiGenValue {
+    font-weight: 500;
+    font-size: 35px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.aqiGenTitle {
+    font-weight: 600;
+    font-size: 10px;
+}
+
+.aqiSubValuesBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-top: 15px;
+    margin-left: 30px;
+}
+
+.aqiSubTitles {
+    font-weight: 500;
+    text-align: start;
+    flex-direction: column;
+}
+
+.aqiSubValues {
+    font-weight: 600;
+    margin-left: 25px;
+    text-align: start;
+    flex-direction: column;
+}
+
+.aqiSubValue-green {
+    text-align: center;
+    background-color: var(--aqiGreen);
+    width: 45px;
+    color: white;
+    border-radius: 35px;
+}
+
+.aqiSubValue-yellow {
+    text-align: center;
+    background-color: var(--aqiYellow);
+    width: 45px;
+    color: white;
+    border-radius: 35px;
+}
+
+.aqiSubValue-orange {
+    text-align: center;
+    background-color: var(--aqiOrange);
+    width: 45px;
+    color: white;
+    border-radius: 35px;
+}
+
+.aqiSubValue-red {
+    text-align: center;
+    background-color: var(--aqiRed);
+    width: 45px;
+    color: white;
+    border-radius: 35px;
+}
+
+.aqiSubValue-purple {
+    text-align: center;
+    background-color: var(--aqiPurple);
+    width: 45px;
+    color: white;
+    border-radius: 35px;
+}
+
+.precipBody {
+    margin-top: 10px;
+}
+
+.precipMssg {
+    margin-top: 15px;
+}
+
+.precipBubbles {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.precipBubbles div {
+    margin: 10px 2px 0;
+}
+
+.rainBoxes {
+    width: 10px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #ADADAD;
+}
+
+.rainBoxesTrue {
+    width: 10px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: var(--aqiGreen);
+}
+
+.uvBlocks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    overflow: auto;
+}
+
+.uvBlock {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    width: 30px;
+    margin: 0 7px;
+}
+
+.uvIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+.uvDetailsText {
+    font-weight: 600;
+}
+
+.uvDetailsText-red {
+    font-weight: 600;
+    color: red;
+}
+
+.uvBar-green {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviGreen);
+}
+
+.uvBar-lime {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviLime);
+}
+
+.uvBar-yellow {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviYellow);
+}
+
+.uvBar-yellowOrange {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviYellowOrange);
+}
+
+.uvBar-orange {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviOrange);
+}
+
+.uvBar-bloodOrange {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviBloodOrange);
+}
+
+.uvBar-red {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviRed);
+}
+
+.uvBar-darkRed {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviDarkRed);
+}
+
+.uvBar-redPink {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviRedPink);
+}
+
+.uvBar-pink {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviPink);
+}
+
+.uvBar-violet {
+    width: 12px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: var(--uviViolet);
+}
 
 /* ===== Forecasting ===== */
 
@@ -513,6 +841,57 @@ div.content {
     .forecasting {
         width: 20rem;
     }
+
+    .aqiSubTitles {
+        font-size: 15px;
+    }
+
+    .aqiRing-green {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-yellow {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-orange {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-red {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-purple {
+        width: 100px;
+        height: 100px;
+    }
+
+    .precipBubbles div {
+        margin: 10px 0.07rem 0;
+    }
+
+    .rainBoxes {
+        width: 5px;
+        height: 20px;
+        border-radius: 50px;
+        background-color: #ADADAD;
+    }
+    
+    .rainBoxesTrue {
+        width: 5px;
+        height: 20px;
+        border-radius: 50px;
+        background-color: var(--aqiGreen);
+    }
+
+    .uvBlock {
+        margin: 0 5px;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -562,5 +941,56 @@ div.content {
 
     .forecasting {
         width: 20rem;
+    }
+
+    .aqiSubTitles {
+        font-size: 15px;
+    }
+
+    .aqiRing-green {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-yellow {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-orange {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-red {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-purple {
+        width: 100px;
+        height: 100px;
+    }
+
+    .precipBubbles div {
+        margin: 10px 0.07rem 0;
+    }
+
+    .rainBoxes {
+        width: 5px;
+        height: 20px;
+        border-radius: 50px;
+        background-color: #ADADAD;
+    }
+    
+    .rainBoxesTrue {
+        width: 5px;
+        height: 20px;
+        border-radius: 50px;
+        background-color: var(--aqiGreen);
+    }
+
+    .uvBlock {
+        margin: 0 5px;
     }
 }

@@ -42,7 +42,7 @@ export default function Body({currentLocation}) {
           }
           {currentLocation && weatherData && aqiData &&
             <div className="container-fluid mt-4">
-              <div className="row d-flex">
+              <div className="row d-flex mainBody">
                 <Conditions weatherData={weatherData}/>
                 
                 <Locations alertsData={alertsData}/>
@@ -55,6 +55,7 @@ export default function Body({currentLocation}) {
               </div>
             </div>
           }
+          <br />
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import SunIcon from '../assets/images/UVIsun.png';
 export default function activities({ currentLocation, events, setEvents }) {
   return (
     <div className="col-sm-12">
-      <div className="card w-100 locat-activities">
+      <div className="card w-100 locat-activities border-0 shadow-sm">
           <div className="card-body">
               <div className="card-group activities-row">
                   <div className="card">

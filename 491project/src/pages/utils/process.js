@@ -1,3 +1,5 @@
+import '../../App.css';
+
 export const getLocation = async () => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -62,7 +64,47 @@ export const getCurrentInfo = (weatherInfo) => {
   }
 }
 
-export const getMinutely = (weatherInfo) => { return weatherInfo.minutely; }
+export const getMinutely = (weatherInfo) => { 
+  let rainFlag = 0;
+  var rainPopLoop = [];
+
+  for (let i = 0; i < 60; i+=2) {
+    const pop = weatherInfo.minutely[i].precipitation;
+
+    if (pop > 0) {
+      rainFlag += 2;
+      rainPopLoop.push(1); // rain
+    } else {
+      rainPopLoop.push(0); // no rain
+    }
+  }
+
+  let rainMssg;
+  let noRainCtr = 0;
+  let yesRainCtr = 0;
+
+  if (rainFlag === 0) {
+    rainMssg = "No precipitation for the next hour";
+  } else if (rainFlag === 60) {
+    rainMssg = "Precipitation for the next hour";
+  } else if (rainFlag > 0 && rainFlag < 60) {
+    for (let i = 0; i < rainPopLoop.length; i++) {
+      if (rainPopLoop[i] === 0) {
+        noRainCtr += 2;
+      } else {
+        yesRainCtr += 2;
+      }
+    }
+
+    if (rainPopLoop[0] === 0) {
+      rainMssg = "Precipitation starting within the next " + noRainCtr + " minutes"
+    } else if (rainPopLoop[0] === 1) {
+      rainMssg = "Precipitation ending within the next " + yesRainCtr + " minutes"
+    }
+  }
+
+  return { rainMssg: rainMssg, rainPopLoop: rainPopLoop };
+}
 
 export const getHourly = (weatherInfo) => {
   let hours = weatherInfo.hourly;
@@ -134,18 +176,83 @@ export const getDaily = (weatherInfo) => {
   return daysData;
 }
 
+const getUVColor = (uvValue) => {
+  switch(uvValue){
+    case 1:
+      return "green";
+    case 2:
+      return "lime";
+    case 3:
+      return "yellow";
+    case 4:
+      return "yellowOrange";
+    case 5:
+      return "orange";
+    case 6:
+      return "bloodOrange";
+    case 7:
+      return "red";
+    case 8:
+      return "darkRed";
+    case 9:
+      return "redPink";
+    case 10:
+      return "pink";
+    case 11:
+      return "violet";
+    default:
+      return "violet";
+  }
+}
+
 export const getUvi = (weatherInfo) => {
   let days = weatherInfo.daily;
   let uviData = [];
+  var daysNames = ['M','T','W','T','F','S', 'S'];
 
   for (let i = 0; i < 8; i++) {
-    uviData.push({
-      dt: days[i].dt,
-      uvi: days[i].uvi,
-    });
+    const today = new Date();
+    let x = new Date(days[i].dt * 1000);
+    
+    var day;
+    if (today.toDateString() === x.toDateString()) {
+      day = "▲";
+    } else {
+      day = daysNames[x.getDay()];
+    }
+
+    if (Math.round(days[i].uvi) === 0) {
+      uviData.push({
+        dt: days[i].dt,
+        day: day,
+        uvi: 1,
+        uvColor: getUVColor(1),
+      });
+    } else {
+      uviData.push({
+        dt: days[i].dt,
+        day: day,
+        uvi: Math.round(days[i].uvi),
+        uvColor: getUVColor(Math.round(days[i].uvi)),
+      });
+    }
   }
 
   return uviData;
+}
+
+const getAqiColor = (aqiValue) => {
+  if (aqiValue <= 50) {
+    return "green";
+  } else if (aqiValue >= 51 && aqiValue <= 100) {
+    return "yellow";
+  } else if (aqiValue >= 101 && aqiValue <= 150) {
+    return "orange";
+  } else if (aqiValue >= 151 && aqiValue <= 200) {
+    return "red";
+  } else {
+    return "purple";
+  }
 }
 
 export const getAqiInfo = (aqiInfo) => {
@@ -169,6 +276,10 @@ export const getAqiInfo = (aqiInfo) => {
     ozone: ozone,
     fine: pm2_5,
     coarse: pm10,
+    overallColor: getAqiColor((ozone + pm2_5 + pm10) / 3),
+    ozoneColor: getAqiColor(ozone),
+    fineColor: getAqiColor(pm2_5),
+    coarseColor: getAqiColor(pm10),
   }
 }
 
