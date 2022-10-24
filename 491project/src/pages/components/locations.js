@@ -1,14 +1,22 @@
 import AlertBody from "./alertbody";
 
-export default function Locations ({ alertsData }) {
+export default function Locations ({ currentLocation, alertsData }) {
   return (
     <div className="col-sm-6">
       <div className="card locat-info border-0 shadow-sm">
           <div className="card-body">
             <div className="locatTitleBody">
-                <p className="locatTitle">12345 Stree Avenue</p>
-                <p className="locatTitle">Toon Town, CA, 92831</p>
-                <p className="locatSubtitle">United States</p>
+              {!currentLocation.name &&
+                <>
+                  <p className="locatTitle">Current Location</p>
+                </>
+              }
+              {currentLocation.name &&
+                <>
+                  <p className="locatTitle">{currentLocation.name}</p>
+                  <p className="locatSubtitle">{`${currentLocation.state}, ${currentLocation.country}`}</p>
+                </>
+              }
             </div>
             <br />
             <div className="alerts">

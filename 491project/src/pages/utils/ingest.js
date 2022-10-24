@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { format } from 'date-fns';
-import { getAqiInfo, processWeatherZoneUrl, processWeatherZone, processWeatherAlertData } from './process';
+import { getAqiInfo, processWeatherZoneUrl, processWeatherZone, processWeatherAlertData, processPlacesData } from './process';
 
 const ONECALL_URL = 'https://api.openweathermap.org/data/2.5/onecall?';
 const AQINOW_URL = 'https://www.airnowapi.org/aq/observation/latLong/current/?format=application/json';
 const NWS_URL = 'https://api.weather.gov';
+const GEOAPIFY_URL = 'https://api.geoapify.com/v2';
 
 const KEYS = require('../../keys.json')
 const ONECALL_KEY = KEYS[0]['key'];
 const AQINOW_KEY = KEYS[1]['key'];
+const GEOAPIFY_KEY = KEYS[2]['key'];
 
 export const getWeatherData = async (currentLocation, unitSystem) => {
   try {
@@ -49,6 +51,33 @@ export const getWeatherAlertData = async (currentLocation) => {
     
     if (result.length) return result
     return null;
+  } catch (err) {
+    console.log(`ERROR: ${err.message}`);
+  }
+
+  return null;
+}
+
+export const getTodoData = async (currentLocation, radius_meter) => {
+  // TODO: Add events query here
+  const places = await getPlacesData(currentLocation, radius_meter);
+  const processed_places = processPlacesData(places);
+
+  return processed_places;
+}
+
+export const getPlacesData = async (currentLocation, radius_meter) => {
+  try {
+    const params = {
+      filter: `circle:${currentLocation.lon},${currentLocation.lat},${radius_meter}`,
+      categories: 'activity,entertainment,leisure,natural,national_park,tourism,camping,amenity',
+      conditions: 'access',
+      lang: 'en',
+      limit: 5,
+      apiKey: GEOAPIFY_KEY
+    }
+    const response = await axios.get(`${GEOAPIFY_URL}/places`, { params } );
+    return response.data
   } catch (err) {
     console.log(`ERROR: ${err.message}`);
   }

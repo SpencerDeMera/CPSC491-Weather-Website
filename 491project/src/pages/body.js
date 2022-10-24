@@ -5,12 +5,13 @@ import Details from './components/details';
 import Forecasts from './components/forecasts';
 import ReactLoading from 'react-loading';
 import { useEffect, useState } from 'react';
-import { getAQIData, getWeatherAlertData, getWeatherData } from './utils/ingest';
+import { getAQIData, getTodoData, getWeatherAlertData, getWeatherData } from './utils/ingest';
 
 export default function Body({currentLocation}) {
   const [weatherData, setWeatherData] = useState(null);
   const [aqiData, setAqiData] = useState(null);
   const [alertsData, setAlertsData] = useState(null);
+  const [todoData, setTodoData] = useState(null);
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -20,17 +21,23 @@ export default function Body({currentLocation}) {
 
     const fetchAqiData = async () => {
       const newAqiData = await getAQIData(currentLocation);
-      setAqiData(newAqiData)
+      setAqiData(newAqiData);
     };
 
     const fetchAlertsData = async () => {
       const newAlertsData = await getWeatherAlertData(currentLocation);
       setAlertsData(newAlertsData);
     }
+
+    const fetchTodoData = async () => {
+      const newTodoData = await getTodoData(currentLocation, 5000);
+      setTodoData(newTodoData);
+    }
     
     fetchWeatherData();
     fetchAqiData();
     fetchAlertsData();
+    fetchTodoData();
   }, [currentLocation]);
 
   return (
@@ -45,9 +52,12 @@ export default function Body({currentLocation}) {
               <div className="row d-flex mainBody">
                 <Conditions weatherData={weatherData}/>
                 
-                <Locations alertsData={alertsData}/>
+                <Locations
+                  currentLocation={currentLocation}
+                  alertsData={alertsData}
+                />
                 
-                <Activities />
+                <Activities todoData={todoData} />
                 
                 <Details weatherData={weatherData} aqiData={aqiData}/>
                 

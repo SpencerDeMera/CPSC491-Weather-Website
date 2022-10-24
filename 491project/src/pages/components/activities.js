@@ -1,41 +1,14 @@
-import SunIcon from '../assets/images/UVIsun.png';
+import ActivitiesItem from './activitiesitem';
 
-export default function activities({ currentLocation, events, setEvents }) {
+export default function activities({ todoData }) {
   return (
     <div className="col-sm-12">
       <div className="card w-100 locat-activities border-0 shadow-sm">
           <div className="card-body">
               <div className="card-group activities-row">
-                  <div className="card">
-                      <img src={SunIcon} className="card-img-top" alt="..." />
-                      <div className="card-body">
-                          <h5 className="card-title">temp text</h5>
-                      </div>
-                  </div>
-                  <div className="card">
-                      <img src={SunIcon} className="card-img-top" alt="..." />
-                      <div className="card-body">
-                          <h5 className="card-title">temp text</h5>
-                      </div>
-                  </div>
-                  <div className="card">
-                      <img src={SunIcon} className="card-img-top" alt="..." />
-                      <div className="card-body">
-                          <h5 className="card-title">temp text</h5>
-                      </div>
-                  </div>
-                  <div className="card">
-                      <img src={SunIcon} className="card-img-top" alt="..." />
-                      <div className="card-body">
-                          <h5 className="card-title">temp text</h5>
-                      </div>
-                  </div>
-                  <div className="card">
-                      <img src={SunIcon} className="card-img-top" alt="..." />
-                      <div className="card-body">
-                          <h5 className="card-title">temp text</h5>
-                      </div>
-                  </div>
+                {todoData && todoData.map((item, index) => 
+                  <ActivitiesItem todoItem={item} />
+                )}
               </div>
           </div>
       </div>

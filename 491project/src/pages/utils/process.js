@@ -306,3 +306,20 @@ export const processWeatherAlertData = (alertData) => {
 
   return data;
 }
+
+export const processPlacesData = (placesData) => {
+  const places_feat = placesData.features;
+  var data = [];
+  var item = null;
+
+  for (let i = 0; i < places_feat.length; i++) {
+    item = places_feat[i].properties
+    data.push({
+      name: item.name,
+      address: item.formatted,
+      category: item.categories[Math.floor(Math.random() * item.categories.length)]
+    });
+  }
+
+  return data;
+}
