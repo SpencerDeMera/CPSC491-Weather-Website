@@ -5,6 +5,7 @@ import Body from './pages/body';
 import Footer from './pages/footer';
 import { useEffect, useState } from 'react';
 import { getLocation } from './pages/utils/process';
+import { getGeoReverseCodeData } from './pages/utils/search';
 
 export default function App() {
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -12,11 +13,12 @@ export default function App() {
   useEffect(() => {
     const load = async () => {
       const location = await getLocation();
+      const details = await getGeoReverseCodeData(location);
       setCurrentLocation({
         id: 0,
-        name: "",
-        state: "",
-        country: "",
+        name: details.name,
+        state: details.state,
+        country: details.country,
         lat: location.lat,
         lon: location.lon
       });
