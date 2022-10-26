@@ -1,5 +1,3 @@
-import '../../App.css';
-
 export const getLocation = async () => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition((position) => {

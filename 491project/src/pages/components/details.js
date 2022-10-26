@@ -3,7 +3,7 @@ import ReactLoading from 'react-loading';
 import { getUvi, getMinutely } from '../utils/process';
 import SunIcon from '../assets/images/UVIsun.png';
 
-export default function Details({ weatherData, aqiData }) {
+export default function Details({weatherData, aqiData}) {
   const minutelyInfo = getMinutely(weatherData);
   const uviInfo = getUvi(weatherData);
 

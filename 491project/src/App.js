@@ -9,9 +9,11 @@ import { getGeoReverseCodeData } from './pages/utils/search';
 
 export default function App() {
   const [currentLocation, setCurrentLocation] = useState(null);
+  const [unitsSystem, setUnitsSystem] = useState(null);
 
   useEffect(() => {
     const load = async () => {
+      setUnitsSystem('imperial');
       const location = await getLocation();
       const details = await getGeoReverseCodeData(location);
       setCurrentLocation({
@@ -30,12 +32,12 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Header />
+        <Header setUnitsSystem={setUnitsSystem}/>
       </header>
 
       <section>
         <Sidebar setCurrentLocation={setCurrentLocation} />
-        <Body currentLocation={currentLocation} />
+        <Body currentLocation={currentLocation} unitsSystem={unitsSystem}/>
       </section>
 
       <footer>

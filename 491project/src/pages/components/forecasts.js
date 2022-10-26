@@ -1,7 +1,7 @@
 import ReactLoading from 'react-loading';
 import { getHourly, getDaily } from '../utils/process';
 
-export default function Forecasts({weatherData}) {
+export default function Forecasts({weatherData, unitsSystem}) {
   let hourlyInfo = getHourly(weatherData);
   let dailyInfo = getDaily(weatherData);
   

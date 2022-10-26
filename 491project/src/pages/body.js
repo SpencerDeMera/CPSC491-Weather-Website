@@ -7,7 +7,7 @@ import ReactLoading from 'react-loading';
 import { useEffect, useState } from 'react';
 import { getAQIData, getTodoData, getWeatherAlertData, getWeatherData } from './utils/ingest';
 
-export default function Body({currentLocation}) {
+export default function Body({currentLocation, unitsSystem}) {
   const [weatherData, setWeatherData] = useState(null);
   const [aqiData, setAqiData] = useState(null);
   const [alertsData, setAlertsData] = useState(null);
@@ -15,7 +15,7 @@ export default function Body({currentLocation}) {
 
   useEffect(() => {
     const fetchWeatherData = async () => {
-      const newWeatherData = await getWeatherData(currentLocation, 'imperial');
+      const newWeatherData = await getWeatherData(currentLocation, unitsSystem);
       setWeatherData(newWeatherData);
     };
 
@@ -38,7 +38,7 @@ export default function Body({currentLocation}) {
     fetchAqiData();
     fetchAlertsData();
     fetchTodoData();
-  }, [currentLocation]);
+  }, [currentLocation, unitsSystem]);
 
   return (
     <div className="showcase">
@@ -47,10 +47,13 @@ export default function Body({currentLocation}) {
           {!currentLocation &&
             <ReactLoading type={'spinningBubbles'} color={'#56BFB5'} height={200} width={200} />
           }
-          {currentLocation && weatherData && aqiData &&
+          {currentLocation && weatherData && aqiData && 
             <div className="container-fluid mt-4">
               <div className="row d-flex mainBody">
-                <Conditions weatherData={weatherData}/>
+                <Conditions 
+                  weatherData={weatherData} 
+                  unitsSystem={unitsSystem}
+                />
                 
                 <Locations
                   currentLocation={currentLocation}
@@ -59,9 +62,15 @@ export default function Body({currentLocation}) {
                 
                 <Activities todoData={todoData} />
                 
-                <Details weatherData={weatherData} aqiData={aqiData}/>
+                <Details 
+                  weatherData={weatherData} 
+                  aqiData={aqiData}
+                />
                 
-                <Forecasts weatherData={weatherData}/>
+                <Forecasts 
+                  weatherData={weatherData} 
+                  unitsSystem={unitsSystem}
+                />
               </div>
             </div>
           }

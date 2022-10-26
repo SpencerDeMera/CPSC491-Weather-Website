@@ -87,6 +87,35 @@ a.navbar-brand:visited {
     color: var(--darkPrimaryText);
 }
 
+.currUnitBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 75px;
+    height: 35px;
+    border-radius: 35px;
+    background-color: var(--lightPrimaryBackgroundColor);
+}
+
+.currUnitBtn-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    font-weight: 600;
+    color: var(--darkPrimaryText);
+}
+
+.currUnitBtn-text:hover {
+    background-color: var(--darkPrimaryText);
+    color: var(--lightPrimaryBackgroundColor);
+    cursor: pointer;
+}
+
 /* ===== Sidebar ===== */
 .sidebar {
     margin: 0;
