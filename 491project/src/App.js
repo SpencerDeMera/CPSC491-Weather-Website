@@ -13,9 +13,9 @@ export default function App() {
 
   useEffect(() => {
     const load = async () => {
+      setUnitsSystem('imperial');
       const location = await getLocation();
       const details = await getGeoReverseCodeData(location);
-
       setCurrentLocation({
         id: 0,
         name: details.name,
@@ -24,13 +24,6 @@ export default function App() {
         lat: location.lat,
         lon: location.lon
       });
-      
-      // Set unit system based on location
-      if (details.country === 'US') {
-        setUnitsSystem('imperial');
-      } else {
-        setUnitsSystem('metric');
-      }
     }
 
     load();

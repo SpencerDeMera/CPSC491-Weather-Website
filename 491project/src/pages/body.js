@@ -47,7 +47,7 @@ export default function Body({currentLocation, unitsSystem}) {
           {!currentLocation &&
             <ReactLoading type={'spinningBubbles'} color={'#56BFB5'} height={200} width={200} />
           }
-          {currentLocation && weatherData && aqiData && 
+          {currentLocation && weatherData && 
             <div className="container-fluid mt-4">
               <div className="row d-flex mainBody">
                 <Conditions 
@@ -72,9 +72,9 @@ export default function Body({currentLocation, unitsSystem}) {
                   unitsSystem={unitsSystem}
                 />
               </div>
+              <div className="tempFiller"/>
             </div>
           }
-          <br />
         </div>
       </div>
     </div>

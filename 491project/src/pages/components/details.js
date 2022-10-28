@@ -53,8 +53,8 @@ export default function Details({weatherData, aqiData}) {
                 <div className="precipBody detailsBody">
                   <p className="precipMssg">{minutelyInfo.rainMssg}</p>
                   <div className="precipBubbles">
-                    {minutelyInfo.rainPopLoop && minutelyInfo.rainPopLoop.map((bar, index) => 
-                      <div key={index}>
+                    {minutelyInfo.rainPopLoop && minutelyInfo.rainPopLoop.map((bar, i) => 
+                      <div key={i}>
                         {bar > 0 &&
                           <div className="rainBoxesTrue"/>
                         }
@@ -70,9 +70,9 @@ export default function Details({weatherData, aqiData}) {
                   <p className="detailsTitle">This Week's UV Outlook</p>
                   <div className="uvBody detailsBody">
                     <div className="uvBlocks">
-                      {uviInfo && uviInfo.map((block, index) =>
-                        <div key={index} className="uvBlock">
-                          {index === 0 &&
+                      {uviInfo && uviInfo.map((block, i) =>
+                        <div key={i} className="uvBlock">
+                          {i === 0 &&
                             <>
                               <p className="uvDetailsText">{block.uvi}</p>
                               <img src={SunIcon} className="uvIcon" alt="..." />
@@ -80,7 +80,7 @@ export default function Details({weatherData, aqiData}) {
                               <p className="uvDetailsText-red">{block.day}</p>
                             </>
                           }
-                          {index > 0 &&
+                          {i > 0 &&
                             <>
                               <p className="uvDetailsText">{block.uvi}</p>
                               <img src={SunIcon} className="uvIcon" alt="..." />

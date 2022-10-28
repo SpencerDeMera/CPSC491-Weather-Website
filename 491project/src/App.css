@@ -2,7 +2,7 @@
 
 :root {
     --primaryColor: #56BFB5;
-    --secondaryColor: #55A6D9;
+    --secondaryColor: #0491e9;
     --lightPrimaryBackgroundColor: #D6F0E8;
     --lightSecondaryBackgroundColor: #e9e9e9;
     --accentColor: #F34E76;
@@ -58,16 +58,31 @@ img {
     width: 100%;
 }
 
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 35px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primaryColor);
+    border-radius: 35px;
+}
+
 .showcase {
     margin-top: 55px;
-    z-index: 5;
+    height: 100%;
     display: flex;
     justify-content: center;
     background-color: var(--lightPrimaryBackgroundColor);
 }
 
 .mainBody {
-    max-width: 1400px;
+    max-width: 1440px;
 }
 
 /* ===== Navbar ===== */
@@ -484,6 +499,7 @@ div.content {
 .detailsTitle {
     font-weight: 600;
     margin-top: 10px;
+    color: var(--darkPrimaryText);
 }
 
 .aqi-tab {
@@ -585,7 +601,7 @@ div.content {
 }
 
 .aqiSubTitles {
-    font-weight: 500;
+    font-weight: 600;
     text-align: start;
     flex-direction: column;
 }
@@ -781,12 +797,165 @@ div.content {
 }
 
 /* ===== Forecasting ===== */
+.foreBody {
+    height: 185px;
+}
 
+.foreTitle {
+    font-weight: 600;
+    margin-top: 10px;
+    color: var(--darkPrimaryText);
+}
+
+.hourlyBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.scrollContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    overflow-x: auto;
+    width: 75rem;
+    height: 150px;
+    cursor: pointer;
+    padding-top: 20px;
+    padding-bottom: 35px;
+    box-sizing: content-box;
+}
+
+.boxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 65px;
+    height: 115px;
+    margin: 0 7px;
+    line-height: 0;
+    border-radius: 15px;
+    background-color: var(--primaryColor);
+    color: var(--lightPrimaryBackgroundColor);
+}
+
+.hourlyDetails {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.hourlytime {
+    margin-top: 17px;
+}
+
+.hourlyTemp {
+    margin-top: 5px;
+}
+
+.hourlyPop {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.weather-icon-hourly {
+    margin-top: -10px;
+    width: 35px;
+    height: 35px;
+}
+
+.dailyBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dailyBody .scrollContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    margin-top: -10px;
+}
+
+.outBoxes {
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+}
+
+.dailyDetails {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.dailytime {
+    margin-bottom: 0px;
+    color: var(--darkPrimaryText);
+}
+
+.dailyTemp {
+    margin-top: 10px;
+}
+
+.maxBar {
+    height: 3px;
+    width: 25px;
+    border-radius: 50px;
+    margin-top: -7px;
+    background-color: var(--accentColor);
+}
+
+.minBar {
+    height: 3px;
+    width: 25px;
+    border-radius: 50px;
+    margin-top: 10px;
+    background-color: var(--secondaryColor);
+}
+
+.dailyPop {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.weather-icon-daily {
+    margin-top: 0px;
+    width: 35px;
+    height: 35px;
+}
+
+/* ===== Footer ===== */
+.tempFiller {
+    height: 50px;
+}
 
 /* ===== Media Controls ===== */
+@media screen and (max-width: 1500px) {
+    .scrollContainer {
+        width: 65rem;
+        padding-top: 5px;
+        padding-bottom: 0px;
+    }
+}
+
 @media screen and (max-width: 1440px) {
     .main-card {
         width: 20rem;
+    }
+
+    .saved-title {
+        text-align: center;
+        padding-left: 0px;
+    }
+
+    .saved-locs {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
     }
 
     .sub-conditions-cards .sub-cards .card {
@@ -815,9 +984,13 @@ div.content {
     .locat-info {
         width: 100%;
     }
+
+    .scrollContainer {
+        max-width: 40rem;
+    }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1080px) {
     .showcase {
         margin-top: 0;
     }
@@ -828,7 +1001,10 @@ div.content {
         position: relative;
     }
     
-    .sidebar a {float: left;}
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
     
     div.content {margin-left: 0;}   
 
@@ -844,9 +1020,18 @@ div.content {
         padding-left: 0px;
     }
 
-    .saved-locs {
+    .saved-area-mobile {
         display: flex;
         justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .saved-locs {
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: row;
     }
 
@@ -854,9 +1039,121 @@ div.content {
         flex-wrap: wrap;
     }
 
-    .locat-info {
-        margin-top: 1.5rem;
+    .locat-activities {
         width: 20rem;
+    }
+
+    .cond-details {
+        width: 20rem;
+    }
+
+    .forecasting {
+        width: 20rem;
+    }
+
+    .aqiSubTitles {
+        font-size: 15px;
+    }
+
+    .aqiRing-green {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-yellow {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-orange {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-red {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .aqiRing-purple {
+        width: 100px;
+        height: 100px;
+    }
+
+    .precipBubbles div {
+        margin: 10px 0.07rem 0;
+    }
+
+    .rainBoxes {
+        width: 10px;
+        height: 30px;
+        border-radius: 50px;
+        background-color: #ADADAD;
+    }
+    
+    .rainBoxesTrue {
+        width: 10px;
+        height: 30px;
+        border-radius: 50px;
+        background-color: var(--aqiGreen);
+    }
+
+    .uvBlock {
+        margin: 0 5px;
+    }
+
+    .scrollContainer {
+        max-width: 40rem;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .showcase {
+        margin-top: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+    
+    div.content {margin-left: 0;}   
+
+    a.navbar-brand {margin-left: 0px;}
+
+    .search-area {
+        width: 85%;
+        margin-top: 70px;
+    }
+
+    .saved-title {
+        text-align: center;
+        padding-left: 0px;
+    }
+
+    .saved-area-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .saved-locs {
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }   
+
+    .top-row {
+        flex-wrap: wrap;
     }
 
     .locat-activities {
@@ -920,6 +1217,16 @@ div.content {
 
     .uvBlock {
         margin: 0 5px;
+    }
+
+    .scrollContainer {
+        max-width: 30rem;
+    }
+
+    .dailyBody .scrollContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
     }
 }
 
@@ -945,10 +1252,24 @@ div.content {
         padding-left: 0px;
     }
 
-    .saved-locs {
+    .saved-area-mobile {
         display: flex;
         justify-content: center;
-        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .saved-locs {
+        width: 125px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .locationName {
+        margin-top: -10px;
+        font-size: 12px;
     }
 
     .top-row {
@@ -1021,5 +1342,15 @@ div.content {
 
     .uvBlock {
         margin: 0 5px;
+    }
+
+    .scrollContainer {
+        max-width: 18rem;
+    }
+
+    .dailyBody .scrollContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
     }
 }

@@ -104,13 +104,34 @@ export const getMinutely = (weatherInfo) => {
   return { rainMssg: rainMssg, rainPopLoop: rainPopLoop };
 }
 
+const getFormattedTime = (hour) => {
+  var formatted;
+
+  if (hour < 1) {
+    formatted = `12 AM`;
+  } else if (hour < 12) {
+    formatted = `${hour} AM`;
+  } else if (hour === 12) {
+    formatted = `${hour} PM`;
+  } else if (hour > 12 && hour < 24) {
+    formatted = `${hour - 12} PM`;
+  } else if (hour === 24) {
+    formatted = `${hour - 12} AM`;
+  }
+
+  return formatted;
+}
+
 export const getHourly = (weatherInfo) => {
   let hours = weatherInfo.hourly;
   let hoursData = [];
 
   for (let i = 0; i < 48; i++) {
+    const time = new Date(hours[i].dt * 1000);
+    const hour = time.getHours();
+
     hoursData.push({
-      dt: hours[i].dt,
+      dt: getFormattedTime(hour),
       temp: hours[i].temp,
       feels_like: hours[i].feels_like,
       pressure: hours[i].pressure,
@@ -136,10 +157,20 @@ export const getHourly = (weatherInfo) => {
 export const getDaily = (weatherInfo) => {
   let days = weatherInfo.daily;
   let daysData = [];
+  var daysNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 
   for (let i = 0; i < 8; i++) {
+    const today = new Date();
+    let x = new Date(days[i].dt * 1000);
+    var day;
+    if (today.toDateString() === x.toDateString()) {
+      day = "Today";
+    } else {
+      day = daysNames[x.getDay()];
+    }
+
     daysData.push({
-      dt: days[i].dt,
+      dt: day,
       sunrise: days[i].sunrise,
       sunset: days[i].sunset,
       moonrise: days[i].moonrise,
