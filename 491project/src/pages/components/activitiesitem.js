@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
-import defaultColor from "../assets/image.png";
+import defaultColor from "../assets/images/image.png";
 import KEYS from "../../keys.json";
 import { useState } from "react";
 
