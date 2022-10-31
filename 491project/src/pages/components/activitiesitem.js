@@ -5,6 +5,7 @@ import KEYS from "../../keys.json";
 import { useState } from "react";
 
 export default function ActivitiesItem({ todoItem }) {
+  const google = window.google;
   const GOOGLE_API = KEYS[3]["key"];
 
   const [img, setImg] = useState("");
