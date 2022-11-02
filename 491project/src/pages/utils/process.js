@@ -312,14 +312,6 @@ export const getAqiInfo = (aqiInfo) => {
   }
 }
 
-export const processWeatherZoneUrl = (pointData) => {
-  return pointData.properties.county;
-}
-
-export const processWeatherZone = (zoneData) => {
-  return zoneData.properties.id;
-}
-
 export const processWeatherAlertData = (alertData) => {
   const features = alertData.features;
   var data = [];
