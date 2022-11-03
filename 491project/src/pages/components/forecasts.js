@@ -51,9 +51,9 @@ export default function Forecasts({weatherData, unitsSystem}) {
                   <div className="scrollContainer">
                     {dailyInfo && 
                       dailyInfo.map((fore, i) => 
-                      <div className="outBoxes">  
+                      <div key={i} className="outBoxes">  
                         <p className="dailyDetails dailytime">{fore.dt}</p>
-                        <div key={i} className="boxes shadow-sm">
+                        <div className="boxes shadow-sm">
                           <img 
                             src={`https://openweathermap.org/img/wn/${fore.weather_icon}@2x.png`} 
                             className="weather-icon-daily" 

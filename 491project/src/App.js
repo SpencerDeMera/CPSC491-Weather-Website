@@ -9,6 +9,7 @@ import { getGeoReverseCodeData } from './pages/utils/search';
 
 export default function App() {
   const [currentLocation, setCurrentLocation] = useState(null);
+  const [defaultLocation, setDefaultLocation] = useState(null);
   const [unitsSystem, setUnitsSystem] = useState(null);
 
   useEffect(() => {
@@ -16,13 +17,23 @@ export default function App() {
       setUnitsSystem('imperial');
       const location = await getLocation();
       const details = await getGeoReverseCodeData(location);
+
       setCurrentLocation({
         id: 0,
         name: details.name,
         state: details.state,
         country: details.country,
         lat: location.lat,
-        lon: location.lon
+        lon: location.lon,
+      });
+
+      setDefaultLocation({
+        id: 0,
+        name: details.name,
+        state: details.state,
+        country: details.country,
+        lat: location.lat,
+        lon: location.lon,
       });
     }
 
@@ -32,11 +43,11 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Header setUnitsSystem={setUnitsSystem}/>
+        <Header setUnitsSystem={setUnitsSystem} defaultLocation={defaultLocation} setCurrentLocation={setCurrentLocation}/>
       </header>
 
       <section>
-        <Sidebar setCurrentLocation={setCurrentLocation} />
+        <Sidebar setCurrentLocation={setCurrentLocation}/>
         <Body currentLocation={currentLocation} unitsSystem={unitsSystem}/>
       </section>
 
