@@ -80,9 +80,9 @@ export default function ActivitiesItem({ todoItem }) {
       />
       <div className="card-body" style={{ margin: "0", padding: "0" }}>
         <h5 className="card-title">{
-          (todoItem.name).length <= 25
+          (todoItem.name).length <= 30
             ? todoItem.name
-            : `${(todoItem.name).slice(0, 25)}...`
+            : `${(todoItem.name).slice(0, 30)}...`
         }</h5>
       </div>
     </div>
