@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { format } from 'date-fns';
-import { getAqiInfo, processWeatherAlertData, processPlacesData } from './process';
+import { getAqiInfo, processWeatherAlertData, processPlacesData, processEventsData } from './process';
 
 const BASE_URL = 'http://localhost:4000';
 
@@ -56,11 +56,21 @@ export const getWeatherAlertData = async (currentLocation) => {
 }
 
 export const getTodoData = async (currentLocation, radius_meter) => {
-  // TODO: Add events query here
+  var todo = []
   const places = await getPlacesData(currentLocation, radius_meter);
   const processed_places = processPlacesData(places);
 
-  return processed_places;
+  // Get events if not enough places
+  if (processed_places.length < 5) {
+    const events = await getEventsData(currentLocation, 5 - processed_places.length);
+    const processed_events = processEventsData(events.events);
+    
+    todo = processed_events
+  }
+
+  const finalTodo = [...todo, ...processed_places]
+
+  return finalTodo;
 }
 
 export const getPlacesData = async (currentLocation, radius_meter) => {
@@ -73,10 +83,30 @@ export const getPlacesData = async (currentLocation, radius_meter) => {
       limit: 5
     }
     const response = await axios.get(`${BASE_URL}/places`, { params });
-    return response.data
+    return response.data;
   } catch (err) {
     console.log(`ERROR: ${err.message}`);
   }
 
   return null;
+}
+
+export const getEventsData = async (currentLocation, limit) => {
+  try {
+    const now = new Date();
+    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const timestamp = startOfDay / 1000;
+    const params = {
+      latitude: currentLocation.lat,
+      longitude: currentLocation.lon,
+      start_date: timestamp,
+      sort_on: 'popularity',
+      sort_by: 'desc',
+      limit: limit
+    }
+    const response = await axios.get(`${BASE_URL}/events`, { params });
+    return response.data;
+  } catch (error) {
+    console.log(`ERROR: ${error.message}`);
+  }
 }

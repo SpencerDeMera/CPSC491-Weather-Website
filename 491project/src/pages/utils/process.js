@@ -344,3 +344,20 @@ export const processPlacesData = (placesData) => {
 
   return data;
 }
+
+export const processEventsData = (eventsData) => {
+  var data = [];
+  var item = null;
+  
+  for (let i = 0; i < eventsData.length; i++) {
+    item = eventsData[i]
+    data.push({
+      name: item.name,
+      address: `${item.location.display_address[0]}, ${item.location.display_address[1]}`,
+      category: item.category,
+      imageUrl: item.image_url
+    })
+  }
+
+  return data;
+}
