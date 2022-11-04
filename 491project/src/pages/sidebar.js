@@ -4,7 +4,7 @@ import SavedLocations from "./components/savedlocations";
 import { getGeoCodeData } from "./utils/search";
 import { useEffect, useState } from 'react';
 
-export default function Sidebar({ setCurrentLocation }) {
+export default function Sidebar({ setCurrentLocation, defaultLocation, currentLocation }) {
   const [searchValue, setSearchValue] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [savedLocations, setSavedLocations] = useState(
@@ -47,6 +47,8 @@ export default function Sidebar({ setCurrentLocation }) {
         <SavedLocations
           savedLocations={savedLocations}
           setCurrentLocation={setCurrentLocation}
+          defaultLocation={defaultLocation}
+          currentLocation={currentLocation}
         />
     </div>
   )

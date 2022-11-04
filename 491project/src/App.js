@@ -47,7 +47,7 @@ export default function App() {
       </header>
 
       <section>
-        <Sidebar setCurrentLocation={setCurrentLocation}/>
+        <Sidebar setCurrentLocation={setCurrentLocation} defaultLocation={defaultLocation} currentLocation={currentLocation}/>
         <Body currentLocation={currentLocation} unitsSystem={unitsSystem}/>
       </section>
 

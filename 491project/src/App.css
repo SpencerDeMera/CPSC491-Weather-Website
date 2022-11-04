@@ -284,6 +284,7 @@ div.content {
 
 .sidebar .locationName {
     font-size: 15px;
+    margin-top: -5px;
 }
 
 .sidebar .locationSub {
@@ -1085,11 +1086,12 @@ div.content {
     }
 
     .saved-locs {
-        width: 200px;
+        width: 180px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: row;
+        border-radius: 25px;
     }
 
     .top-row {
@@ -1199,10 +1201,11 @@ div.content {
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+        border-radius: 25px;
     }
 
     .saved-locs {
-        width: 200px;
+        width: 180px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1358,6 +1361,7 @@ div.content {
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+        border-radius: 25px;
     }
 
     .saved-locs {
