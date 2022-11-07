@@ -335,11 +335,13 @@ export const processPlacesData = (placesData) => {
 
   for (let i = 0; i < places_feat.length; i++) {
     item = places_feat[i].properties
-    data.push({
-      name: item.name ? item.name : item.street,
-      address: item.formatted,
-      category: item.categories[Math.floor(Math.random() * item.categories.length)]
-    });
+    if (item.name) {
+      data.push({
+        name: item.name ? item.name : item.street,
+        address: item.formatted,
+        category: item.categories[Math.floor(Math.random() * item.categories.length)]
+      });
+    }
   }
 
   return data;
