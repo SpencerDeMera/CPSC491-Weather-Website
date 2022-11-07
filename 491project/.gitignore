@@ -2,9 +2,11 @@
 
 *src/keys.json
 *package.json
+/server/.env
 
 # dependencies
 /node_modules
+/server/node_modules
 /.pnp
 .pnp.js
 

@@ -312,14 +312,6 @@ export const getAqiInfo = (aqiInfo) => {
   }
 }
 
-export const processWeatherZoneUrl = (pointData) => {
-  return pointData.properties.county;
-}
-
-export const processWeatherZone = (zoneData) => {
-  return zoneData.properties.id;
-}
-
 export const processWeatherAlertData = (alertData) => {
   const features = alertData.features;
   var data = [];
@@ -344,10 +336,27 @@ export const processPlacesData = (placesData) => {
   for (let i = 0; i < places_feat.length; i++) {
     item = places_feat[i].properties
     data.push({
-      name: item.name,
+      name: item.name ? item.name : item.street,
       address: item.formatted,
       category: item.categories[Math.floor(Math.random() * item.categories.length)]
     });
+  }
+
+  return data;
+}
+
+export const processEventsData = (eventsData) => {
+  var data = [];
+  var item = null;
+  
+  for (let i = 0; i < eventsData.length; i++) {
+    item = eventsData[i]
+    data.push({
+      name: item.name,
+      address: `${item.location.display_address[0]}, ${item.location.display_address[1]}`,
+      category: item.category,
+      imageUrl: item.image_url
+    })
   }
 
   return data;

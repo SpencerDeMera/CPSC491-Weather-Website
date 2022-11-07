@@ -1,14 +1,10 @@
 import axios from 'axios';
 
-const GEOCODE_URL = 'https://api.openweathermap.org/geo/1.0/direct?';
-const GEOCODEREV_URL = 'https://api.openweathermap.org/geo/1.0/reverse?';
-
-let data = require('../../keys.json');
-const OpenWeatherAPI_KEY = data[0]['key'];
+const BASE_URL = 'http://localhost:4000'
 
 export const getGeoCodeData = async (cityName) => {
 	try {
-		const response = await axios.get(`${GEOCODE_URL}q=${cityName}&limit=5&appid=${OpenWeatherAPI_KEY}`);
+		const response = await axios.get(`${BASE_URL}/geo?q=${cityName}&limit=5`);
 		return response.data;
 	} catch (err) {
 		console.log(`ERROR: ${err.message}`);
@@ -19,7 +15,7 @@ export const getGeoCodeData = async (cityName) => {
 
 export const getGeoReverseCodeData = async (location) => {
 	try {
-		const response = await axios.get(`${GEOCODEREV_URL}lat=${location.lat}&lon=${location.lon}&limit=1&appid=${OpenWeatherAPI_KEY}`);
+		const response = await axios.get(`${BASE_URL}/georev?lat=${location.lat}&lon=${location.lon}&limit=1`);
 		return response.data[0];
 	} catch (err) {
 		console.log(`ERROR: ${err.message}`);
