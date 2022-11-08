@@ -1,6 +1,11 @@
 === Running the Backend ===
 Prerequisite:
 - A .env in the 491project/server folder with keys and url contents
+- Setup and install package dependencies:
+  1. Using the terminal, change directory to ./491project/server
+  2. Initialize npm by running this command: npm init -y
+  3. Install packages by running this command: npm install express cors axios dotenv
+  4. Install nodemon in development by running: npm install -D nodemon
 
 Then, run the following cmd in a separate terminal
 > cd 491project/server
