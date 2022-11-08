@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { format } from 'date-fns';
-import { getAqiInfo, processWeatherAlertData, processPlacesData, processEventsData } from './process';
+import { getAqiInfo, processWeatherAlertData, processPlacesData, processEventsData, processNpsTodoData } from './process';
 
 const BASE_URL = 'http://localhost:4000';
 
@@ -44,7 +44,7 @@ export const getWeatherAlertData = async (currentLocation) => {
   // TODO: Consider WeatherBit API to get alerts in EU and Israel
   try {
     const response = await axios.get(`${BASE_URL}/alerts?lat=${currentLocation.lat}&lon=${currentLocation.lon}`)
-    const result = processWeatherAlertData(response.data)
+    const result = processWeatherAlertData(response.data, 3)
     
     if (result.length) return result
     return null;
@@ -55,32 +55,54 @@ export const getWeatherAlertData = async (currentLocation) => {
   return null;
 }
 
-export const getTodoData = async (currentLocation, radius_meter) => {
+export const getTodoData = async (currentLocation, radius_meter, limit) => {
   var todo = []
-  const places = await getPlacesData(currentLocation, radius_meter);
-  const processed_places = processPlacesData(places);
+  var places = []
+  var events = []
 
-  // Get events if not enough places
-  if (processed_places.length < 5) {
-    const events = await getEventsData(currentLocation, 5 - processed_places.length);
-    const processed_events = processEventsData(events.events);
-    
-    todo = processed_events
+  if (currentLocation.parkCode !== undefined) {
+    const nps_resp = await getNpsTodoData(currentLocation, limit);
+    todo = processNpsTodoData(nps_resp);
+  } else {
+    const places_resp = await getPlacesData(currentLocation, radius_meter, limit);
+    places = processPlacesData(places_resp);
   }
 
-  const finalTodo = [...todo, ...processed_places]
+  // Get events if not enough todo/places
+  if ((todo.length + places.length) < limit) {
+    const events_resp = await getEventsData(currentLocation, limit - places.length);
+    events = processEventsData(events_resp.events);
+  }
+
+  const finalTodo = [...todo, ...places, ...events]
 
   return finalTodo;
 }
 
-export const getPlacesData = async (currentLocation, radius_meter) => {
+export const getNpsTodoData = async (currentLocation, limit) => {
+  try {
+    const params = {
+      parkCode: currentLocation.parkCode,
+      limit: limit
+    }
+    const response = await axios.get(`${BASE_URL}/nps/todo`, { params });
+    const data = response.data.data;
+    return data;
+  } catch (err) {
+    console.log(`ERROR: ${err.message}`);
+  }
+
+  return null;
+}
+
+export const getPlacesData = async (currentLocation, radius_meter, limit) => {
   try {
     const params = {
       filter: `circle:${currentLocation.lon},${currentLocation.lat},${radius_meter}`,
       categories: 'activity,entertainment,leisure,natural,national_park,tourism,camping,amenity',
       conditions: 'access',
       lang: 'en',
-      limit: 5
+      limit: limit
     }
     const response = await axios.get(`${BASE_URL}/places`, { params });
     return response.data;
@@ -109,4 +131,31 @@ export const getEventsData = async (currentLocation, limit) => {
   } catch (error) {
     console.log(`ERROR: ${error.message}`);
   }
+
+  return null;
+}
+
+export const getGooglePhoto = async (place) => {
+  var textInput = '';
+  const addr = place.address;
+
+  if (addr === undefined || addr === '' || addr === null) {
+    textInput = place.name;
+  } else {
+    textInput = place.address;
+  }
+
+  const params = {
+    input: textInput
+  }
+
+  try {
+    const response = await axios.get(`${BASE_URL}/google/find_photo?input=${textInput}`);
+    const photo = response.data;
+    return photo;
+  } catch (error) {
+    console.log(`ERROR: ${error.message}`);
+  }
+
+  return null;
 }

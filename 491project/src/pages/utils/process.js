@@ -312,7 +312,7 @@ export const getAqiInfo = (aqiInfo) => {
   }
 }
 
-export const processWeatherAlertData = (alertData) => {
+export const processWeatherAlertData = (alertData, limit) => {
   const features = alertData.features;
   var data = [];
   
@@ -322,6 +322,29 @@ export const processWeatherAlertData = (alertData) => {
       "effDate": features[i].properties.effective,
       "text": features[i].properties.parameters.NWSheadline[0],
       "instruction": features[i].properties.instruction
+    });
+  }
+
+  // Sort and limit the results
+  const sorted = data.sort((a, b) => {
+    var keyA = new Date(a.effDate)
+    var keyB = new Date(b.effDate)
+    if (keyA < keyB) return 1
+    if (keyA > keyB) return -1
+    return 0
+  }).slice(0, limit)
+
+  return sorted;
+}
+
+export const processNpsTodoData = (todoData) => {
+  var data = [];
+
+  for (let i = 0; i < todoData.length; i++) {
+    const item = todoData[i];
+    data.push({
+      name: item.title,
+      imageUrl: item.images[0].url
     });
   }
 

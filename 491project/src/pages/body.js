@@ -30,7 +30,7 @@ export default function Body({currentLocation, unitsSystem}) {
     }
 
     const fetchTodoData = async () => {
-      const newTodoData = await getTodoData(currentLocation, 5000);
+      const newTodoData = await getTodoData(currentLocation, 5000, 5);
       setTodoData(newTodoData);
     }
     
