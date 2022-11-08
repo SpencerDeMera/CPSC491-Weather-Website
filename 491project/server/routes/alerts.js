@@ -26,11 +26,17 @@ router.get('/', async (req,res) => {
       console.log(`REQUEST: ${data_url}`)
     }
 
-    const apiRes_alert = await axios.get(`${BASE_URL}/alerts/active?zone=${data_zone}`)
+    const params = new URLSearchParams({
+      zone: data_zone,
+      message_type: 'alert',
+      severity: 'Extreme,Severe',
+      urgency: 'Immediate,Expected,Future'
+    })
+    const apiRes_alert = await axios.get(`${BASE_URL}/alerts/active?${ params }`)
     const data_alert = apiRes_alert.data
 
     if (process.env.NODE_ENV !== 'production') {
-      console.log(`REQUEST: ${BASE_URL}/alerts/active?zone=${data_zone}`)
+      console.log(`REQUEST: ${BASE_URL}/alerts/active?${params}`)
     }
 
     res.status(200).json(data_alert)

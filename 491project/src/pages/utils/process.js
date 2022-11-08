@@ -312,7 +312,7 @@ export const getAqiInfo = (aqiInfo) => {
   }
 }
 
-export const processWeatherAlertData = (alertData) => {
+export const processWeatherAlertData = (alertData, limit) => {
   const features = alertData.features;
   var data = [];
   
@@ -325,7 +325,16 @@ export const processWeatherAlertData = (alertData) => {
     });
   }
 
-  return data;
+  // Sort and limit the results
+  const sorted = data.sort((a, b) => {
+    var keyA = new Date(a.effDate)
+    var keyB = new Date(b.effDate)
+    if (keyA < keyB) return 1
+    if (keyA > keyB) return -1
+    return 0
+  }).slice(0, limit)
+
+  return sorted;
 }
 
 export const processPlacesData = (placesData) => {

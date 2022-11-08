@@ -44,7 +44,7 @@ export const getWeatherAlertData = async (currentLocation) => {
   // TODO: Consider WeatherBit API to get alerts in EU and Israel
   try {
     const response = await axios.get(`${BASE_URL}/alerts?lat=${currentLocation.lat}&lon=${currentLocation.lon}`)
-    const result = processWeatherAlertData(response.data)
+    const result = processWeatherAlertData(response.data, 3)
     
     if (result.length) return result
     return null;
