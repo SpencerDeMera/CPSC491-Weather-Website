@@ -24,9 +24,9 @@ export const getGeoReverseCodeData = async (location) => {
 	return null;
 }
 
-export const getNpsData = async (searchValue) => {
+export const getParkData = async (searchValue) => {
   try {
-    const response = await axios.get(`${BASE_URL}/nps?search_value=${searchValue}`);
+    const response = await axios.get(`${BASE_URL}/parklist?search_value=${searchValue}`);
     return response.data
   } catch (err) {
 		console.log(`ERROR: ${err.message}`);

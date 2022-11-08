@@ -337,6 +337,20 @@ export const processWeatherAlertData = (alertData, limit) => {
   return sorted;
 }
 
+export const processNpsTodoData = (todoData) => {
+  var data = [];
+
+  for (let i = 0; i < todoData.length; i++) {
+    const item = todoData[i];
+    data.push({
+      name: item.title,
+      imageUrl: item.images[0].url
+    });
+  }
+
+  return data;
+}
+
 export const processPlacesData = (placesData) => {
   const places_feat = placesData.features;
   var data = [];

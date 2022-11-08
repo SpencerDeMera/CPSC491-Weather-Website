@@ -1,7 +1,7 @@
 import SearchBox from "./components/searchbox";
 import ResultArea from "./components/resultarea";
 import SavedLocations from "./components/savedlocations";
-import { getGeoCodeData, getNpsData } from "./utils/search";
+import { getGeoCodeData, getParkData } from "./utils/search";
 import { useEffect, useState } from 'react';
 
 export default function Sidebar({ setCurrentLocation, defaultLocation, currentLocation }) {
@@ -20,7 +20,7 @@ export default function Sidebar({ setCurrentLocation, defaultLocation, currentLo
 
     try {
       const geo_response = await getGeoCodeData(searchValue);
-      const np_response = await getNpsData(searchValue);
+      const np_response = await getParkData(searchValue);
       
       // Process np_response to be the same structure as geo_response
       const np_processed = np_response.map(item => {
@@ -29,12 +29,12 @@ export default function Sidebar({ setCurrentLocation, defaultLocation, currentLo
           lat: item.latitude,
           lon: item.longitude,
           parkCode: item.parkCode,
-          state: item.stateCode,
+          state: item.stateName,
           country: 'US'
         }
       });
 
-      const results = [...geo_response, ...np_processed];
+      const results = [...np_processed, ...geo_response];
       
       setSearchResults(results);
       setSearchValue('');
