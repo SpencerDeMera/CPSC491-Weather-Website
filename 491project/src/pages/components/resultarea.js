@@ -14,6 +14,7 @@ export default function ResultArea({
       country: selectedLocation.country,
       lat: selectedLocation.lat,
       lon: selectedLocation.lon,
+      parkCode: selectedLocation.parkCode
     };
 
     const savedLocationList = [...savedLocations, newSavedLocation];
