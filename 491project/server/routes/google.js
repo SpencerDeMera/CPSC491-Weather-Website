@@ -19,7 +19,6 @@ router.get('/find_photo', async (req,res) => {
     const resp_ref = await axios.get(`${BASE_URL}/findplacefromtext/json?${params_ref}`)
     const data_ref = resp_ref.data['candidates']
     const photo_ref = data_ref[0].photos[0].photo_reference // use first photo ref
-    
 
     if (process.env.NODE_ENV !== 'production') {
       console.log(`REQUEST: ${BASE_URL}/findplacefromtext/json?${params_ref}`)
