@@ -19,26 +19,31 @@ export default function SavedLocations({ savedLocations, setCurrentLocation, def
       <div className="saved-area-mobile">
         {savedLocations && savedLocations.map((location, index) => 
           <div key={index} className="saved-locs" onClick={() => handleSelect(index, location.name, location.country)} >
-            {selectedLocation.name === location.name && selectedLocation.country === location.country && currentLocation.lat !== defaultLocation.lat && currentLocation.lon !== defaultLocation.lat
-              ? <>
-                  <a className="locationName" style={{color: '#F34E76'}}>{location.name}</a>
-                  {location.state && 
-                    <a className="locationSub" style={{color: '#F34E76'}}>{location.state}, {location.country}</a>
-                  }
-                  {!location.state &&
-                    <a className="locationSub" style={{color: '#F34E76'}}>{location.country}</a>
-                  }
-                </>
-              : <>
-                  <a className="locationName">{location.name}</a>
-                  {location.state && 
-                    <a className="locationSub">{location.state}, {location.country}</a>
-                  }
-                  {!location.state &&
-                    <a className="locationSub">{location.country}</a>
-                  }
-                </>
-            }
+            <div className="saved-locs-inner">
+              {selectedLocation.name === location.name && selectedLocation.country === location.country && currentLocation.lat !== defaultLocation.lat && currentLocation.lon !== defaultLocation.lat
+                ? <>
+                    <a className="locationName" style={{color: 'crimson'}}>{location.name}</a>
+                    {location.state && 
+                      <a className="locationSub" style={{color: 'crimson'}}>{location.state}, {location.country}</a>
+                    }
+                    {!location.state &&
+                      <a className="locationSub" style={{color: 'crimson'}}>{location.country}</a>
+                    }
+                  </>
+                : <>
+                    <a className="locationName">{location.name}</a>
+                    {location.state && 
+                      <a className="locationSub">{location.state}, {location.country}</a>
+                    }
+                    {!location.state &&
+                      <a className="locationSub">{location.country}</a>
+                    }
+                  </>
+              }
+            </div>
+            <div className="locDelete-body">
+              <span className="locDelete-icon fa-solid fa-xmark"/>
+            </div>
           </div>
         )}
       </div>

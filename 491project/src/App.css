@@ -270,8 +270,45 @@ div.content {
     text-decoration: none;
     font-weight: 600;
     cursor: pointer;
-    height: 60px;
+    height: 70px;
+    position: relative;
 }
+
+.sidebar .saved-locs .saved-locs-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-left: 30px;
+    margin-top: -15px;
+    height: 70px;
+}
+
+.sidebar .saved-locs .locDelete-body {
+    position: absolute;
+    top: 30%;
+    left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 19px;
+    height: 19px;
+    border-radius: 35px;
+    background-color: #fd7575;
+}
+
+.sidebar .saved-locs .locDelete-icon {
+    width: 15px;
+    height: 15px;
+    color: red;
+}
+
+.sidebar .saved-locs .locDelete-body:hover {
+    background-color: red;
+}
+
+.sidebar .saved-locs .locDelete-body:hover .locDelete-icon {
+    color: #fd7575;
+} 
 
 .sidebar .saved-locs:hover {
     color: var(--darkPrimaryText);
@@ -283,12 +320,18 @@ div.content {
 }
 
 .sidebar .locationName {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: left;
     font-size: 15px;
-    margin-top: -5px;
 }
 
 .sidebar .locationSub {
-    margin-top: -40px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: left;
     font-size: 10px;
 }
 
@@ -1016,6 +1059,16 @@ div.content {
         flex-direction: row;
     }
 
+    .sidebar .saved-locs .locDelete-body {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .sidebar .saved-locs .locDelete-icon {
+        width: 20px;
+        height: 20px;
+    }
+
     .sub-conditions-cards .sub-cards .card {
         width: 120px;
         height: 55px;
@@ -1086,12 +1139,28 @@ div.content {
     }
 
     .saved-locs {
-        width: 180px;
+        width: 200px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: row;
         border-radius: 25px;
+        margin: 5px;
+        border: solid 2px var(--lightPrimaryBackgroundColor);
+    }
+
+    .saved-area-mobile .saved-locs .locationName {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .saved-area-mobile .saved-locs .locationSub {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
     .top-row {
@@ -1205,12 +1274,28 @@ div.content {
     }
 
     .saved-locs {
-        width: 180px;
+        width: 200px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: row;
+        margin: 5px;
+        border: solid 2px var(--lightPrimaryBackgroundColor);
     }   
+
+    .saved-area-mobile .saved-locs .locationName {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .saved-area-mobile .saved-locs .locationSub {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 
     .top-row {
         flex-wrap: wrap;
@@ -1365,16 +1450,28 @@ div.content {
     }
 
     .saved-locs {
-        width: 125px;
+        width: 150px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: row;
+        margin: 5px;
+        border: solid 2px var(--lightPrimaryBackgroundColor);
     }
 
-    .locationName {
-        margin-top: -10px;
+    .saved-area-mobile .saved-locs .locationName {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
         font-size: 12px;
+    }
+    
+    .saved-area-mobile .saved-locs .locationSub {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
     .top-row {
