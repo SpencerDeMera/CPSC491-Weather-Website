@@ -17,24 +17,24 @@
 
 ## Layout
 * Header
-    * Acts as the main page header and home for the unists and darkmode toggles.
+   * Acts as the main page header and home for the units system, darkmode, and default location toggles and buttons.
 * Sidebar
-    * Provides functionality for location-based searching, location selection, and location retention.
+   * Provides functionality for location-based searching, location selection, and location retention.
 * Body
-    * Contains the main portion of website functionality split into modules in the form of cards such as:
-        * Current Conditions
-            * Summary of current weather conditions at user's location.
-        * Location Information
-            * Summary of location information such as geolocation, address, and location-based alerts and warnings.
-        * Location Amenities
-            * A list of 5 mini-cards that link to currated activities & amentities available at the selected location.
-        * Detailed Conditions
-            * Precipiation outlook for the next hour
-            * AQI display for general AQI, Ozone, Fine Particulate Matter, and Coarse Particulate Matter.
-            * UV Index outlook for the next week including the current day.
-        * Weather Forecasts
-            * An houlry forecast outlook for the next 24 - 48 hours
-            * A daily forecast outlook for the next 7 days plus the current day. 
+   * Contains the main portion of website functionality split into modules in the form of cards such as:
+      * Current Conditions
+         * Summary of current weather conditions at the user's location.
+      * Location Information
+         * Summary of location information such as geolocation, address, and location-based alerts and warnings.
+      * Location Amenities
+         * A list of 5 mini-cards that link to curated activities & amenities available at the selected location.
+      * Detailed Conditions
+         * Precipitation outlook for the next hour
+         * AQI display for general AQI, Ozone, Fine Particulate Matter, and Coarse Particulate Matter.
+         * UV Index outlook for the next week including the current day.
+      * Weather Forecasts
+         * An hourly forecast outlook for the next 24 - 48 hours
+         * A daily forecast outlook for the next 7 days plus the current day.
 
 ## Tools & Technologies Used
 * Figma
