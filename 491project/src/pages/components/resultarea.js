@@ -26,18 +26,19 @@ export default function ResultArea({
   return (
     <div className="results-area">
       {searchResults && searchResults.map((location, index) => 
-          <div
-            className="search-results"
-            key={index}
-            onClick={() => handleSelect(index)}
-          >
-            <a className="locationName">{location.name}</a>
-            {location.state &&
-              <a className="locationSub">{location.state}, {location.country}</a>
-            }
-            {!location.state &&
-              <a className="locationSub">{location.country}</a>
-            }
+          <div className="search-results" key={index}>
+            <div
+              className="search-results-inner"
+              onClick={() => handleSelect(index)}
+            >
+              <a className="locationName">{location.name}</a>
+              {location.state &&
+                <a className="locationSub">{location.state}, {location.country}</a>
+              }
+              {!location.state &&
+                <a className="locationSub">{location.country}</a>
+              }
+            </div>
           </div>
       )}
       {/* handle if no search results */}
