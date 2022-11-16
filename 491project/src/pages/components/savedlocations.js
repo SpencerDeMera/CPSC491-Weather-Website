@@ -12,6 +12,29 @@ export default function SavedLocations({ savedLocations, setSavedLocations, setC
 
   const handleDelete = (index) => {
     const newSavedLocations = savedLocations.filter(loc => loc.id !== index);
+    var newCurrentLocation = null;
+
+    // Handle if selected location is selected for delete
+    // Select the prev saved location relative to it
+    // Or, select last saved location if first saved location is deleted
+    // Otherwise, select default location
+    if (index === currentLocation.id) {
+      
+      const indexInArray = savedLocations.findIndex(e => e.id === index);
+
+      if (savedLocations.length === 1) {
+        newCurrentLocation = defaultLocation;
+      } else {
+        if (indexInArray === 0) {
+          newCurrentLocation = savedLocations[savedLocations.length - 1];
+        } else {
+          newCurrentLocation = savedLocations[indexInArray - 1];
+        }
+      }
+
+      setCurrentLocation(newCurrentLocation);
+    }
+
     setSavedLocations(newSavedLocations);
   };
   
