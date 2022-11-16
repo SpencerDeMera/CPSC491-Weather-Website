@@ -62,6 +62,7 @@ export default function Sidebar({ setCurrentLocation, defaultLocation, currentLo
 
         <SavedLocations
           savedLocations={savedLocations}
+          setSavedLocations={setSavedLocations}
           setCurrentLocation={setCurrentLocation}
           defaultLocation={defaultLocation}
           currentLocation={currentLocation}
