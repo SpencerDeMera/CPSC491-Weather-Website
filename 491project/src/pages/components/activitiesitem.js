@@ -4,7 +4,7 @@ import { getGooglePhoto } from "../utils/ingest";
 
 export default function ActivitiesItem({ todoItem }) {
   const [image, setImage] = useState(defaultColor);
-  const titleCharLimit = 50;
+  const titleCharLimit = 30;
 
   useEffect(() => {
     const fetchPhoto = async () => {
