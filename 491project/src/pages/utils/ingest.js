@@ -70,7 +70,7 @@ export const getTodoData = async (currentLocation, radius_meter, limit) => {
 
   // Get events if not enough todo/places
   if ((todo.length + places.length) < limit) {
-    const events_resp = await getEventsData(currentLocation, limit - todo.length - places.length);
+    const events_resp = await getEventsData(currentLocation, limit - places.length);
     events = processEventsData(events_resp.events);
   }
 
@@ -143,6 +143,10 @@ export const getGooglePhoto = async (place) => {
     textInput = place.name;
   } else {
     textInput = place.address;
+  }
+
+  const params = {
+    input: textInput
   }
 
   try {

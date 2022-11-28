@@ -4,7 +4,7 @@ import { getGooglePhoto } from "../utils/ingest";
 
 export default function ActivitiesItem({ todoItem }) {
   const [image, setImage] = useState(defaultColor);
-  const titleCharLimit = 30;
+  const titleCharLimit = 50;
 
   useEffect(() => {
     const fetchPhoto = async () => {
@@ -21,12 +21,13 @@ export default function ActivitiesItem({ todoItem }) {
   }, [todoItem]);
 
   const onImageError = (e) => {
-    e.target.src = defaultColor
+    e.target.src = defaultColor;
   };
 
   return (
     <div className="card">
       <div id="map"></div>
+
       <img
         src={image === null ? defaultColor : image}
         className="card-img-top"
@@ -35,11 +36,12 @@ export default function ActivitiesItem({ todoItem }) {
         onError={onImageError}
       />
       <div className="card-body" style={{ margin: "0", padding: "0" }}>
-        <h5 className="card-title">{
-          (todoItem.name).length <= titleCharLimit
+        <div className="title-parent"></div>
+        <h5 className="card-title">
+          {todoItem.name.length <= titleCharLimit
             ? todoItem.name
-            : `${(todoItem.name).slice(0, titleCharLimit)}...`
-        }</h5>
+            : `${todoItem.name.slice(0, titleCharLimit)}...`}
+        </h5>
       </div>
     </div>
   );
