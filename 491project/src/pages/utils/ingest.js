@@ -8,7 +8,7 @@ import {
   processNpsTodoData,
 } from "./process";
 
-const BASE_URL = 'https://like-orange-sundae.glitch.me';
+const BASE_URL = "http://localhost:4000";
 
 export const getWeatherData = async (currentLocation, unitSystem) => {
   try {
