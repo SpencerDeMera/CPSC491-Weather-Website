@@ -15,7 +15,6 @@ export default function SearchBox({
           aria-describedby="button-addon2"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
-          id="search-form"
         />
         <button
           className="btn btn-outline-light"

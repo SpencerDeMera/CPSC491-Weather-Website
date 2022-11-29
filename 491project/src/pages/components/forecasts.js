@@ -61,12 +61,7 @@ export default function Forecasts({ weatherData, unitsSystem }) {
                   <div className="scrollContainer">
                     {hourlyInfo &&
                       hourlyInfo.map((fore, i) => (
-                        <div
-                          key={i}
-                          className={`boxes shadow-sm  ${
-                            i === hourlyInfo.length - 1 ? "card-active-bg" : ""
-                          }`}
-                        >
+                        <div key={i} className="boxes shadow-sm">
                           <p className="hourlyDetails hourlytime">{fore.dt}</p>
                           <img
                             src={`https://openweathermap.org/img/wn/${fore.weather_icon}@2x.png`}
@@ -104,7 +99,7 @@ export default function Forecasts({ weatherData, unitsSystem }) {
                       dailyInfo.map((fore, i) => (
                         <div key={i} className="outBoxes">
                           <p className="dailyDetails dailytime">{fore.dt}</p>
-                          <div className={`boxes shadow-sm `}>
+                          <div className="boxes shadow-sm">
                             <img
                               src={`https://openweathermap.org/img/wn/${fore.weather_icon}@2x.png`}
                               className="weather-icon-daily"

@@ -1,6 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import TogglerContext from "../../context/TogglerContext";
 import sun from "../assets/images/sun.png";
 import moon from "../assets/images/moon.png";
