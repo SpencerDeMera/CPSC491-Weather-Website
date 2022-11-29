@@ -1,5 +1,5 @@
 import ReactLoading from "react-loading";
-import Toggler from "./components/toggler";
+import Toggler from "./components/Toggler";
 
 export default function Header({
   setUnitsSystem,
