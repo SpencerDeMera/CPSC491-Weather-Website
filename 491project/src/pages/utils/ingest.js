@@ -145,6 +145,10 @@ export const getGooglePhoto = async (place) => {
     textInput = place.address;
   }
 
+  const params = {
+    input: textInput
+  }
+
   try {
     const response = await axios.get(`${BASE_URL}/google/find_photo?input=${textInput}`);
     const photo = response.data;

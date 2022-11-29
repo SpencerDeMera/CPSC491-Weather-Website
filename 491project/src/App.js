@@ -1,11 +1,12 @@
-import './App.css';
-import Header from './pages/header';
-import Sidebar from './pages/sidebar';
-import Body from './pages/body';
-import Footer from './pages/footer';
-import { useEffect, useState } from 'react';
-import { getLocation } from './pages/utils/process';
-import { getGeoReverseCodeData } from './pages/utils/search';
+import "./App.css";
+import Header from "./pages/header";
+import Sidebar from "./pages/sidebar";
+import Body from "./pages/body";
+import Footer from "./pages/footer";
+import { useEffect, useState } from "react";
+import { getLocation } from "./pages/utils/process";
+import { getGeoReverseCodeData } from "./pages/utils/search";
+import TogglerState from "./context/TogglerState";
 
 export default function App() {
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -14,7 +15,7 @@ export default function App() {
 
   useEffect(() => {
     const load = async () => {
-      setUnitsSystem('imperial');
+      setUnitsSystem("imperial");
       const location = await getLocation();
       const details = await getGeoReverseCodeData(location);
 
@@ -35,25 +36,35 @@ export default function App() {
         lat: location.lat,
         lon: location.lon,
       });
-    }
+    };
 
     load();
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Header setUnitsSystem={setUnitsSystem} defaultLocation={defaultLocation} setCurrentLocation={setCurrentLocation}/>
-      </header>
+    <TogglerState>
+      <div className="App">
+        <header className="App-header">
+          <Header
+            setUnitsSystem={setUnitsSystem}
+            defaultLocation={defaultLocation}
+            setCurrentLocation={setCurrentLocation}
+          />
+        </header>
 
-      <section>
-        <Sidebar setCurrentLocation={setCurrentLocation} defaultLocation={defaultLocation} currentLocation={currentLocation}/>
-        <Body currentLocation={currentLocation} unitsSystem={unitsSystem}/>
-      </section>
+        <section>
+          <Sidebar
+            setCurrentLocation={setCurrentLocation}
+            defaultLocation={defaultLocation}
+            currentLocation={currentLocation}
+          />
+          <Body currentLocation={currentLocation} unitsSystem={unitsSystem} />
+        </section>
 
-      <footer>
-        <Footer />
-      </footer>
-    </div>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
+    </TogglerState>
   );
 }
