@@ -6,23 +6,34 @@ export default function ResultArea({
   setCurrentLocation,
 }) {
   const handleSelect = (index) => {
-    const id = savedLocations.length
-      ? savedLocations[savedLocations.length - 1].id + 1
-      : 1;
     const selectedLocation = searchResults[index];
-    const newSavedLocation = {
-      id: id,
-      name: selectedLocation.name,
-      state: selectedLocation.state,
-      country: selectedLocation.country,
-      lat: selectedLocation.lat,
-      lon: selectedLocation.lon,
-      parkCode: selectedLocation.parkCode,
-    };
+    const sameLocation = savedLocations.filter(
+      (item) =>
+        item.name === selectedLocation.name &&
+        item.lat === selectedLocation.lat &&
+        item.lon === selectedLocation.lon
+    );
 
-    const savedLocationList = [...savedLocations, newSavedLocation];
-    setSavedLocations(savedLocationList);
-    setCurrentLocation(newSavedLocation);
+    // Only add selected loc to saved loc if it doesn't already exist in saved loc
+    if (sameLocation.length === 0) {
+      const id = savedLocations.length
+        ? savedLocations[savedLocations.length - 1].id + 1
+        : 1;
+      const newSavedLocation = {
+        id: id,
+        name: selectedLocation.name,
+        state: selectedLocation.state,
+        country: selectedLocation.country,
+        lat: selectedLocation.lat,
+        lon: selectedLocation.lon,
+        parkCode: selectedLocation.parkCode,
+      };
+
+      const savedLocationList = [...savedLocations, newSavedLocation];
+      setSavedLocations(savedLocationList);
+      setCurrentLocation(newSavedLocation);
+    }
+
     setSearchResults([]);
   };
 
