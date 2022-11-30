@@ -312,7 +312,7 @@ div.content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   margin-left: 5px;
   min-height: 50px;
 }
@@ -658,7 +658,7 @@ div.content {
 .navItemCustom > button:hover {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  color: var(--primaryColor);
+  color: var(--darkPrimaryText);
 }
 
 .navItemCustom > button:active {
@@ -1207,6 +1207,16 @@ div.content {
     align-items: center;
   }
 
+  .sidebar .search-results-inner {
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebar .search-results-inner {
+    display: flex;
+    align-items: center;
+  }
+
   .search-area {
     width: 85%;
     margin-top: 70px;
@@ -1348,6 +1358,16 @@ div.content {
   .sidebar .search-results {
     display: flex;
     justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar .search-results-inner {
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebar .search-results-inner {
+    display: flex;
     align-items: center;
   }
 
@@ -1536,6 +1556,16 @@ div.content {
   .sidebar .search-results {
     display: flex;
     justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar .search-results-inner {
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebar .search-results-inner {
+    display: flex;
     align-items: center;
   }
 
