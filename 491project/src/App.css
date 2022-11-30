@@ -233,8 +233,7 @@ a.navbar-brand:visited {
 }
 
 .toggler img {
-  width: 60%;
-  height: 60%;
+  margin-top: -2px;
 }
 
 /* ===== Sidebar ===== */
