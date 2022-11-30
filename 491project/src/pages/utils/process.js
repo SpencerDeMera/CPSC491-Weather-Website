@@ -157,16 +157,15 @@ export const getHourly = (weatherInfo) => {
 export const getDaily = (weatherInfo) => {
   let days = weatherInfo.daily;
   let daysData = [];
-  var daysNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  var daysNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
   for (let i = 0; i < 8; i++) {
     const today = new Date();
     let x = new Date(days[i].dt * 1000);
-    var day;
+    var day = daysNames[x.getDay()];
+
     if (today.toDateString() === x.toDateString()) {
       day = "Today";
-    } else {
-      day = daysNames[x.getDay()];
     }
 
     daysData.push({
@@ -237,17 +236,15 @@ const getUVColor = (uvValue) => {
 export const getUvi = (weatherInfo) => {
   let days = weatherInfo.daily;
   let uviData = [];
-  var daysNames = ['M','T','W','T','F','S', 'S'];
+  var daysNames = ['S','M','T','W','T','F','S'];
 
   for (let i = 0; i < 8; i++) {
     const today = new Date();
     let x = new Date(days[i].dt * 1000);
-    
-    var day;
+    var day = daysNames[x.getDay()];
+
     if (today.toDateString() === x.toDateString()) {
       day = "▲";
-    } else {
-      day = daysNames[x.getDay()];
     }
 
     if (Math.round(days[i].uvi) === 0) {

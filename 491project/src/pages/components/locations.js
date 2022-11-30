@@ -7,9 +7,7 @@ export default function Locations ({ currentLocation, alertsData }) {
           <div className="card-body">
             <div className="locatTitleBody">
               {!currentLocation.name &&
-                <>
-                  <p className="locatTitle">Current Location</p>
-                </>
+                <p className="locatTitle">Current Location</p>
               }
               {currentLocation.name &&
                 <>

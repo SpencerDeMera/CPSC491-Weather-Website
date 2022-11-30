@@ -2,7 +2,7 @@
 
 :root {
   --primaryColor: #56bfb5;
-  --secondaryColor: #0491e9;
+  --secondaryColor: #56bfb5;
   --lightPrimaryBackgroundColor: #d6f0e8;
   --lightSecondaryBackgroundColor: #e9e9e9;
   --accentColor: #f34e76;
@@ -76,7 +76,6 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--lightPrimaryBackgroundColor);
 }
 
 ul {
@@ -108,7 +107,6 @@ img {
 
 .showcase {
   margin-top: 55px;
-
   display: flex;
   justify-content: center;
   background-color: var(--lightPrimaryBackgroundColor);
@@ -140,6 +138,7 @@ a.navbar-brand:visited {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  width: 300px;
 }
 
 .currUnitBtn {
@@ -222,6 +221,22 @@ a.navbar-brand:visited {
   display: none;
 }
 
+.toggler {
+  background-color: var(--lightPrimaryBackgroundColor);
+  color: var(--darkPrimaryText);
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  border-radius: 50rem;
+  margin-left: 1.2rem;
+  width: 3rem;
+  text-align: center;
+}
+
+.toggler img {
+  width: 60%;
+  height: 60%;
+}
+
 /* ===== Sidebar ===== */
 .sidebar {
   margin: 0;
@@ -271,6 +286,9 @@ div.content {
 }
 
 .results-area {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   margin-bottom: 15px;
   width: 100%;
 }
@@ -287,6 +305,7 @@ div.content {
   cursor: pointer;
   min-height: 50px;
   position: relative;
+  width: 100%;
 }
 
 .sidebar .search-results-inner {
@@ -593,9 +612,9 @@ div.content {
 .locatTitleBody {
   display: flex;
   flex-direction: column;
-  line-height: 0;
+  text-align: start;
+  line-height: 1.15;
   margin-top: 10px;
-  line-height: 15%;
 }
 
 .locatTitle {
@@ -993,7 +1012,7 @@ div.content {
   margin: 0 7px;
   line-height: 0;
   border-radius: 15px;
-  background-color: var(--primaryColor);
+  background-color: var(--secondaryColor);
   color: var(--lightPrimaryBackgroundColor);
 }
 
@@ -1182,6 +1201,12 @@ div.content {
     margin-left: 0px;
   }
 
+  .sidebar .search-results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .search-area {
     width: 85%;
     margin-top: 70px;
@@ -1318,6 +1343,12 @@ div.content {
 
   a.navbar-brand {
     margin-left: 0px;
+  }
+
+  .sidebar .search-results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .search-area {
@@ -1498,6 +1529,16 @@ div.content {
     margin-left: 0px;
   }
 
+  .headerBtns {
+    width: 225px;
+  }
+
+  .sidebar .search-results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .search-area {
     width: 85%;
     margin-top: 70px;
@@ -1666,17 +1707,4 @@ div.content {
     color: var(--lightPrimaryBackgroundColor);
     cursor: pointer;
   }
-}
-.toggler {
-  background-color: var(--lightPrimaryBackgroundColor);
-  color: var(--darkPrimaryText);
-  cursor: pointer;
-  padding: 0.4rem 1rem;
-  border-radius: 50rem;
-  margin-left: 1rem;
-  width: 12%;
-  text-align: center;
-}
-.toggler img {
-  width: 70%;
 }
