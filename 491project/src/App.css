@@ -2,7 +2,8 @@
 
 :root {
   --primaryColor: #56bfb5;
-  --secondaryColor: #56bfb5;
+  --secondaryColor: #55A6D9;
+  --boxColor: #56bfb5;
   --lightPrimaryBackgroundColor: #d6f0e8;
   --lightSecondaryBackgroundColor: #e9e9e9;
   --accentColor: #f34e76;
@@ -1011,7 +1012,7 @@ div.content {
   margin: 0 7px;
   line-height: 0;
   border-radius: 15px;
-  background-color: var(--secondaryColor);
+  background-color: var(--boxColor);
   color: var(--lightPrimaryBackgroundColor);
 }
 
