@@ -11,7 +11,7 @@ export default function Conditions ({weatherData, unitsSystem}) {
     const iconURL = `https://openweathermap.org/img/wn/${currentWeather.weather_icon}@2x.png`;
 
     return (
-        <div className="col-sm-6 mainBox ">
+        <div className="col-sm-auto mainBox ">
             <div className="card main-card border-0 shadow-sm">
                 <div className="card-body">
                     <div className="primary-conditions">

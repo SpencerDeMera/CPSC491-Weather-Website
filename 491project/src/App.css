@@ -447,6 +447,14 @@ div.content {
   width: 24rem;
 }
 
+.locationBox {
+  width: 24rem;
+}
+
+.locationBox .card {
+  height: 470px;
+}
+
 .curr-conditions {
   flex-grow: 0;
   flex-shrink: 0;
@@ -1263,6 +1271,10 @@ div.content {
     flex-wrap: wrap;
   }
 
+  .locationBox .card {
+    height: 440px;
+  }
+
   .locat-activities {
     width: 20rem;
   }
@@ -1415,6 +1427,10 @@ div.content {
 
   .top-row {
     flex-wrap: wrap;
+  }
+
+  .locationBox .card {
+    height: 440px;
   }
 
   .locat-activities {
@@ -1614,6 +1630,10 @@ div.content {
 
   .top-row {
     flex-wrap: wrap;
+  }
+
+  .locationBox .card {
+    height: 440px;
   }
 
   .locat-info {
