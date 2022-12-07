@@ -30,6 +30,12 @@ export default function ResultArea({
       };
 
       const savedLocationList = [...savedLocations, newSavedLocation];
+
+      // If above limit, delete the earliest saved location
+      if (savedLocationList.length > 5) {
+        savedLocationList.shift();
+      }
+
       setSavedLocations(savedLocationList);
       setCurrentLocation(newSavedLocation);
     }
