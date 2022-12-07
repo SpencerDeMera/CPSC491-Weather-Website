@@ -90,8 +90,9 @@ export const getTodoData = async (currentLocation, radius_meter, limit) => {
   }
 
   const finalTodo = [...todo, ...places, ...events];
+  const uniqueTodo = [...new Map(finalTodo.map((i) => [i.name, i])).values()];
 
-  return finalTodo;
+  return uniqueTodo;
 };
 
 export const getNpsTodoData = async (currentLocation, limit) => {
